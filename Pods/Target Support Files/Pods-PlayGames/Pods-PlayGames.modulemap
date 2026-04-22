@@ -1,0 +1,6 @@
+framework module Pods_PlayGames {
+  umbrella header "Pods-PlayGames-umbrella.h"
+
+  export *
+  module * { export * }
+}
