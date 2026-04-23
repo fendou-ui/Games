@@ -30,7 +30,7 @@ class SmiroTabBarController: UITabBarController {
             selectedImage: UIImage(named: "tabbar_game_s")?.withRenderingMode(.alwaysOriginal)
         )
         
-        let chimi_find = UINavigationController(rootViewController: UIViewController())
+        let chimi_find = UINavigationController(rootViewController: GameDiscoverViewController())
         chimi_find.tabBarItem = UITabBarItem(
             title: nil,
             image: UIImage(named: "tabbar_star")?.withRenderingMode(.alwaysOriginal),

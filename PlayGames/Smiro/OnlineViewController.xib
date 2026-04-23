@@ -10,8 +10,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnlineViewController" customModule="PlayGames" customModuleProvider="target">
             <connections>
+                <outlet property="please_desc_label" destination="6GW-Ct-KnC" id="sGB-q1-cD3"/>
+                <outlet property="please_note_view" destination="Eie-ck-O87" id="Ycl-Vr-sK2"/>
+                <outlet property="please_yellow_button" destination="a70-yp-zZX" id="J60-zg-46a"/>
                 <outlet property="tableView" destination="ilb-ir-9y3" id="8Cr-9P-ybR"/>
                 <outlet property="user_avatar_image" destination="Wmt-Vx-aHv" id="gUz-qu-Tjc"/>
+                <outlet property="user_love_button" destination="00g-pg-CcE" id="G8M-B2-r2c"/>
                 <outlet property="user_name_label" destination="grT-Ds-Oxd" id="v3U-jo-Oqr"/>
                 <outlet property="user_people_number_label" destination="7Go-W4-ubD" id="PrD-qa-7xP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -129,10 +133,13 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oNH-NC-KO7">
                             <rect key="frame" x="20" y="7" width="200" height="37"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0L-ni-mKy">
+                                <button opaque="NO" tag="311" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0L-ni-mKy">
                                     <rect key="frame" x="162" y="2.6666666666666288" width="32" height="32"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" backgroundImage="online_air"/>
+                                    <connections>
+                                        <action selector="online_tapMoreButtonAndSendChatClick:" destination="-1" eventType="touchUpInside" id="BDj-q0-T1p"/>
+                                    </connections>
                                 </button>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Say something" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cjr-b4-L00">
                                     <rect key="frame" x="8" y="0.0" width="146" height="37"/>
@@ -165,6 +172,9 @@
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" backgroundImage="online_unlove"/>
+                            <connections>
+                                <action selector="online_tapLoveUserChatRoomClick:" destination="-1" eventType="touchUpInside" id="lFm-9c-Ypa"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Eu-GV-L90">
                             <rect key="frame" x="286" y="7.6666666666666288" width="36" height="36"/>
@@ -174,8 +184,11 @@
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" backgroundImage="online_gift"/>
+                            <connections>
+                                <action selector="online_giveLoveUserChatRoomGiftsClick:" destination="-1" eventType="touchUpInside" id="OEQ-9A-NPY"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKe-fD-y3v">
+                        <button opaque="NO" tag="312" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKe-fD-y3v">
                             <rect key="frame" x="235" y="7.6666666666666288" width="36" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="36" id="DEB-Hh-JLP"/>
@@ -183,6 +196,9 @@
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" backgroundImage="online_point"/>
+                            <connections>
+                                <action selector="online_tapMoreButtonAndSendChatClick:" destination="-1" eventType="touchUpInside" id="xlU-Ga-3lC"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -249,6 +265,89 @@
             </constraints>
             <point key="canvasLocation" x="142.74809160305344" y="-16.197183098591552"/>
         </view>
+        <view contentMode="scaleToFill" id="Eie-ck-O87">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYa-ob-dr8">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <connections>
+                        <action selector="online_goImmediatelyAndCancelClick:" destination="-1" eventType="touchUpInside" id="TgO-7V-vPF"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLO-fw-93d">
+                    <rect key="frame" x="0.0" y="592" width="393" height="260"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wv-5D-zYb">
+                            <rect key="frame" x="152.66666666666666" y="31" width="88" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="yY7-Ft-ctC"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The current balance is insufficient. If necessary, please go to the wallet to make a purchase" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GW-Ct-KnC">
+                            <rect key="frame" x="56.666666666666657" y="62" width="280" height="50.333333333333343"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="280" id="xUv-Mz-RPw"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="311" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a70-yp-zZX">
+                            <rect key="frame" x="65.666666666666686" y="143" width="262" height="49"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" backgroundImage="pay_immediately"/>
+                            <connections>
+                                <action selector="online_goImmediatelyAndCancelClick:" destination="-1" eventType="touchUpInside" id="J0V-cE-CW6"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHL-DQ-TUX">
+                            <rect key="frame" x="65.666666666666686" y="197" width="262" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="262" id="IRK-8Q-3VZ"/>
+                                <constraint firstAttribute="height" constant="50" id="keJ-w3-HxQ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="online_goImmediatelyAndCancelClick:" destination="-1" eventType="touchUpInside" id="3QW-aM-9Lf"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="IHL-DQ-TUX" firstAttribute="centerX" secondItem="pLO-fw-93d" secondAttribute="centerX" id="1Vl-bb-KIJ"/>
+                        <constraint firstAttribute="height" constant="260" id="4Mz-FL-AJe"/>
+                        <constraint firstItem="9Wv-5D-zYb" firstAttribute="centerX" secondItem="pLO-fw-93d" secondAttribute="centerX" id="HXd-Uz-9aF"/>
+                        <constraint firstAttribute="bottom" secondItem="a70-yp-zZX" secondAttribute="bottom" constant="68" id="Ja8-FB-Jxq"/>
+                        <constraint firstItem="6GW-Ct-KnC" firstAttribute="centerX" secondItem="pLO-fw-93d" secondAttribute="centerX" id="Lt2-kj-EJq"/>
+                        <constraint firstItem="9Wv-5D-zYb" firstAttribute="top" secondItem="pLO-fw-93d" secondAttribute="top" constant="31" id="XWi-qD-HDy"/>
+                        <constraint firstItem="6GW-Ct-KnC" firstAttribute="top" secondItem="9Wv-5D-zYb" secondAttribute="bottom" constant="9" id="iAZ-rr-tf9"/>
+                        <constraint firstItem="IHL-DQ-TUX" firstAttribute="top" secondItem="a70-yp-zZX" secondAttribute="bottom" constant="5" id="rvh-7c-JIk"/>
+                        <constraint firstItem="a70-yp-zZX" firstAttribute="centerX" secondItem="pLO-fw-93d" secondAttribute="centerX" id="wAR-KT-OZt"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="eJA-9G-ax1"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="QYa-ob-dr8" firstAttribute="leading" secondItem="eJA-9G-ax1" secondAttribute="leading" id="3Yd-7S-6ny"/>
+                <constraint firstItem="QYa-ob-dr8" firstAttribute="top" secondItem="Eie-ck-O87" secondAttribute="top" id="4fj-cK-s4p"/>
+                <constraint firstItem="eJA-9G-ax1" firstAttribute="trailing" secondItem="QYa-ob-dr8" secondAttribute="trailing" id="N7d-XW-VQi"/>
+                <constraint firstItem="eJA-9G-ax1" firstAttribute="trailing" secondItem="pLO-fw-93d" secondAttribute="trailing" id="OmE-Ez-Fdi"/>
+                <constraint firstItem="pLO-fw-93d" firstAttribute="leading" secondItem="Eie-ck-O87" secondAttribute="leading" id="cfC-L5-fsw"/>
+                <constraint firstAttribute="bottom" secondItem="pLO-fw-93d" secondAttribute="bottom" id="kDs-eK-v9e"/>
+                <constraint firstAttribute="bottom" secondItem="QYa-ob-dr8" secondAttribute="bottom" id="zLD-cV-nKk"/>
+            </constraints>
+            <point key="canvasLocation" x="1039" y="-16"/>
+        </view>
     </objects>
     <resources>
         <image name="online_air" width="32" height="32"/>
@@ -258,6 +357,7 @@
         <image name="online_gift" width="36" height="36"/>
         <image name="online_point" width="36" height="36"/>
         <image name="online_unlove" width="36" height="36"/>
+        <image name="pay_immediately" width="262" height="49"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

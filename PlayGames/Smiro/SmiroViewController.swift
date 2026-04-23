@@ -31,7 +31,9 @@ class SmiroViewController: UIViewController {
     }
     
     @IBAction func sendVideoClick(_ sender: Any) {
-        
+        let postVideoVC = PostVideoDynamicVC()
+        postVideoVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(postVideoVC, animated: true)
     }
     
     func setupUIOnlineCollectionView() {
@@ -94,5 +96,8 @@ extension SmiroViewController: UICollectionViewDataSource, UICollectionViewDeleg
             onlineVC.modalPresentationStyle = .fullScreen
             present(onlineVC, animated: true, completion: nil)
         }
+        let openPlayerVC = OpenPlayerVideoVC()
+        openPlayerVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(openPlayerVC, animated: true)
     }
 }
