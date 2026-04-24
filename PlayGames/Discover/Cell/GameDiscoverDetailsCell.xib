@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,25 +27,58 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ot0-nb-2Xh">
                                 <rect key="frame" x="13" y="17" width="314" height="335"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="9"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVr-Q4-Uks">
+                                <rect key="frame" x="273" y="302" width="38" height="38"/>
+                                <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="JQb-vW-F4b"/>
+                                    <constraint firstAttribute="height" constant="38" id="Pwv-g8-FZc"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="tap_discover_love"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ot0-nb-2Xh" firstAttribute="leading" secondItem="DVR-nR-3ed" secondAttribute="leading" constant="13" id="3rw-Uf-HyN"/>
                             <constraint firstAttribute="bottom" secondItem="Ot0-nb-2Xh" secondAttribute="bottom" constant="17" id="Lol-74-bHy"/>
                             <constraint firstAttribute="trailing" secondItem="Ot0-nb-2Xh" secondAttribute="trailing" constant="13" id="VSK-ph-iA6"/>
                             <constraint firstAttribute="height" constant="369" id="a5s-iQ-5d7"/>
+                            <constraint firstAttribute="bottom" secondItem="jVr-Q4-Uks" secondAttribute="bottom" constant="29" id="ahC-Ve-9Mu"/>
+                            <constraint firstAttribute="trailing" secondItem="jVr-Q4-Uks" secondAttribute="trailing" constant="29" id="jJc-sF-ipW"/>
                             <constraint firstItem="Ot0-nb-2Xh" firstAttribute="top" secondItem="DVR-nR-3ed" secondAttribute="top" constant="17" id="zwU-5w-9HG"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="13"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Post_comments" translatesAutoresizingMaskIntoConstraints="NO" id="bYz-wR-XfJ">
+                        <rect key="frame" x="21" y="443" width="107" height="13.666666666666686"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="zZY-kP-K1u" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="21" id="4ca-fB-gXR"/>
                     <constraint firstAttribute="trailing" secondItem="zZY-kP-K1u" secondAttribute="trailing" constant="21" id="9hJ-da-AvD"/>
                     <constraint firstItem="DVR-nR-3ed" firstAttribute="top" secondItem="zZY-kP-K1u" secondAttribute="bottom" constant="12" id="Gxw-rR-T04"/>
+                    <constraint firstItem="bYz-wR-XfJ" firstAttribute="top" secondItem="DVR-nR-3ed" secondAttribute="bottom" constant="11" id="Kvv-Cx-DnA"/>
                     <constraint firstAttribute="trailing" secondItem="DVR-nR-3ed" secondAttribute="trailing" constant="21" id="Saj-92-j76"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bYz-wR-XfJ" secondAttribute="bottom" constant="3" id="h9u-je-bOa"/>
                     <constraint firstItem="DVR-nR-3ed" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="21" id="pcc-EE-5Ex"/>
                     <constraint firstItem="zZY-kP-K1u" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="q7l-o5-dP2"/>
+                    <constraint firstItem="bYz-wR-XfJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="21" id="vJP-dQ-cq0"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -54,8 +86,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="Post_comments" width="107" height="13.666666984558105"/>
+        <image name="tap_discover_love" width="28" height="28"/>
     </resources>
 </document>

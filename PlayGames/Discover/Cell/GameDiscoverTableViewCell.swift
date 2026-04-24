@@ -12,6 +12,9 @@ class GameDiscoverTableViewCell: UITableViewCell {
     @IBOutlet weak var cell_discover_name_label: UILabel!
     @IBOutlet weak var cell_discover_time_label: UILabel!
     @IBOutlet weak var cell_discover_content_label: UILabel!
+    @IBOutlet weak var cell_discover_report_button: UIButton!
+    @IBOutlet weak var cell_discover_center_button: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

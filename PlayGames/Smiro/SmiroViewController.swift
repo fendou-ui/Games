@@ -95,9 +95,11 @@ extension SmiroViewController: UICollectionViewDataSource, UICollectionViewDeleg
             let onlineVC = OnlineViewController()
             onlineVC.modalPresentationStyle = .fullScreen
             present(onlineVC, animated: true, completion: nil)
+        }else {
+            let openPlayerVC = OpenPlayerVideoVC()
+            openPlayerVC.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(openPlayerVC, animated: true)
         }
-        let openPlayerVC = OpenPlayerVideoVC()
-        openPlayerVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(openPlayerVC, animated: true)
+        
     }
 }

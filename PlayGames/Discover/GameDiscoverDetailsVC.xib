@@ -10,6 +10,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameDiscoverDetailsVC" customModule="PlayGames" customModuleProvider="target">
             <connections>
+                <outlet property="game_discover_avatar_imageView" destination="6RJ-4x-WP8" id="nwb-YG-fYl"/>
+                <outlet property="game_discover_follow_tap" destination="CoO-bx-Phz" id="YRS-gZ-T8u"/>
+                <outlet property="game_discover_name_label" destination="l5h-Hg-OO7" id="rIx-aL-eIQ"/>
+                <outlet property="game_discover_something" destination="sxC-Rm-GLz" id="o8S-Gh-xDO"/>
+                <outlet property="game_discover_time_label" destination="nph-AK-1nD" id="Rqn-b7-6mk"/>
+                <outlet property="tableView" destination="vBi-r4-As8" id="CWz-S5-gUF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,9 +24,55 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="post_video_bg" translatesAutoresizingMaskIntoConstraints="NO" id="OtU-7q-NRA">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="post_video_bg" translatesAutoresizingMaskIntoConstraints="NO" id="OtU-7q-NRA">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etj-cJ-zu9">
+                    <rect key="frame" x="0.0" y="772" width="393" height="80"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ao-bD-Mpa">
+                            <rect key="frame" x="20" y="7" width="352" height="37"/>
+                            <subviews>
+                                <button opaque="NO" tag="311" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zdn-UN-8ul">
+                                    <rect key="frame" x="314" y="2.6666666666666288" width="32" height="32"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" backgroundImage="tap_details_send_comment"/>
+                                    <connections>
+                                        <action selector="handleUserUploadGameScreenshotAndAttachMetadata:" destination="-1" eventType="touchUpInside" id="KW5-FU-tV3"/>
+                                    </connections>
+                                </button>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Say something" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sxC-Rm-GLz">
+                                    <rect key="frame" x="8" y="0.0" width="298" height="37"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="Zdn-UN-8ul" firstAttribute="centerY" secondItem="4ao-bD-Mpa" secondAttribute="centerY" id="Cw4-P1-nf4"/>
+                                <constraint firstAttribute="bottom" secondItem="sxC-Rm-GLz" secondAttribute="bottom" id="DJU-k1-FOk"/>
+                                <constraint firstItem="sxC-Rm-GLz" firstAttribute="leading" secondItem="4ao-bD-Mpa" secondAttribute="leading" constant="8" id="JWC-gg-B5Q"/>
+                                <constraint firstAttribute="height" constant="37" id="WiL-HE-G4R"/>
+                                <constraint firstItem="sxC-Rm-GLz" firstAttribute="top" secondItem="4ao-bD-Mpa" secondAttribute="top" id="hIJ-gU-yZX"/>
+                                <constraint firstAttribute="trailing" secondItem="Zdn-UN-8ul" secondAttribute="trailing" constant="6" id="o4L-4b-g8Z"/>
+                                <constraint firstItem="Zdn-UN-8ul" firstAttribute="leading" secondItem="sxC-Rm-GLz" secondAttribute="trailing" constant="8" id="q7j-oA-eRz"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="18"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="4ao-bD-Mpa" firstAttribute="top" secondItem="etj-cJ-zu9" secondAttribute="top" constant="7" id="33H-eQ-nOl"/>
+                        <constraint firstAttribute="height" constant="80" id="4El-of-U8K"/>
+                        <constraint firstAttribute="trailing" secondItem="4ao-bD-Mpa" secondAttribute="trailing" constant="21" id="HWB-f4-F7K"/>
+                        <constraint firstItem="4ao-bD-Mpa" firstAttribute="leading" secondItem="etj-cJ-zu9" secondAttribute="leading" constant="20" id="uEc-Kq-oUO"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ri2-vB-Vzn">
                     <rect key="frame" x="21" y="122" width="351" height="43"/>
                     <subviews>
@@ -53,10 +105,13 @@
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoO-bx-Phz">
+                        <button opaque="NO" tag="513" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CoO-bx-Phz">
                             <rect key="frame" x="262" y="6.6666666666666572" width="89" height="30"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="tap_discover_follow"/>
+                            <connections>
+                                <action selector="requestUserFollowOrUnfollowTargetCommunityCreator:" destination="-1" eventType="touchUpInside" id="ZlO-Mx-uf0"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -80,14 +135,20 @@
                             <rect key="frame" x="337" y="0.0" width="36" height="43"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="open_play_mp4_report"/>
+                            <connections>
+                                <action selector="requestUserFollowOrUnfollowTargetCommunityCreator:" destination="-1" eventType="touchUpInside" id="nrh-Gw-h1y"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXi-Yu-uMW">
+                        <button opaque="NO" tag="512" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fXi-Yu-uMW">
                             <rect key="frame" x="10" y="0.0" width="44" height="43"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="44" id="SNY-Vw-LvC"/>
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="geam_nav_return_black"/>
+                            <connections>
+                                <action selector="requestUserFollowOrUnfollowTargetCommunityCreator:" destination="-1" eventType="touchUpInside" id="auY-CI-7db"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z01-RF-35o">
                             <rect key="frame" x="171" y="11.999999999999998" width="51.333333333333343" height="19.333333333333329"/>
@@ -109,6 +170,10 @@
                         <constraint firstItem="1mo-a3-p3N" firstAttribute="top" secondItem="xy3-NT-GSJ" secondAttribute="top" id="iXu-Rc-Twk"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vBi-r4-As8">
+                    <rect key="frame" x="0.0" y="170" width="393" height="602"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -116,21 +181,29 @@
                 <constraint firstItem="xy3-NT-GSJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="422-Nw-qdj"/>
                 <constraint firstItem="OtU-7q-NRA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="AWN-xM-Qzb"/>
                 <constraint firstItem="ri2-vB-Vzn" firstAttribute="top" secondItem="xy3-NT-GSJ" secondAttribute="bottom" constant="20" id="HD8-1a-cSd"/>
+                <constraint firstItem="etj-cJ-zu9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="L6i-D4-dOz"/>
                 <constraint firstItem="xy3-NT-GSJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="PO6-HZ-7wD"/>
                 <constraint firstAttribute="bottom" secondItem="OtU-7q-NRA" secondAttribute="bottom" id="QLO-qu-zAY"/>
+                <constraint firstItem="vBi-r4-As8" firstAttribute="top" secondItem="ri2-vB-Vzn" secondAttribute="bottom" constant="5" id="W8c-7m-O4L"/>
                 <constraint firstItem="OtU-7q-NRA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XKx-rB-Xnq"/>
                 <constraint firstItem="xy3-NT-GSJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="cL4-pO-5kI"/>
+                <constraint firstItem="vBi-r4-As8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cWr-vh-PXM"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OtU-7q-NRA" secondAttribute="trailing" id="d8I-PP-UCc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ri2-vB-Vzn" secondAttribute="trailing" constant="21" id="dLF-GG-CXI"/>
+                <constraint firstAttribute="bottom" secondItem="etj-cJ-zu9" secondAttribute="bottom" id="k7H-H4-usO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vBi-r4-As8" secondAttribute="trailing" id="l5e-Lg-nAL"/>
+                <constraint firstItem="etj-cJ-zu9" firstAttribute="top" secondItem="vBi-r4-As8" secondAttribute="bottom" id="wDb-ja-1fA"/>
                 <constraint firstItem="ri2-vB-Vzn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="21" id="y83-Fu-isz"/>
+                <constraint firstAttribute="trailing" secondItem="etj-cJ-zu9" secondAttribute="trailing" id="yU4-Wt-v8A"/>
             </constraints>
-            <point key="canvasLocation" x="140" y="20"/>
+            <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>
         <image name="geam_nav_return_black" width="24" height="24"/>
         <image name="open_play_mp4_report" width="36" height="36"/>
         <image name="post_video_bg" width="390" height="844"/>
+        <image name="tap_details_send_comment" width="32" height="32"/>
         <image name="tap_discover_follow" width="89" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

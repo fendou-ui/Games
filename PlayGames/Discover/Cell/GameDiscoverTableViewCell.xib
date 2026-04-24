@@ -67,15 +67,25 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="tap_discover_follow"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2c-Wg-AM2">
+                                        <rect key="frame" x="12" y="0.0" width="75" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="75" id="r4g-wV-EY8"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="3LN-zL-pgL" secondAttribute="trailing" constant="12" id="1Xy-Zb-eid"/>
                                     <constraint firstAttribute="bottom" secondItem="VQy-QF-Zbx" secondAttribute="bottom" id="2dk-Kb-VU6"/>
+                                    <constraint firstItem="m2c-Wg-AM2" firstAttribute="top" secondItem="zB9-y3-InP" secondAttribute="top" id="3os-09-HhK"/>
                                     <constraint firstItem="VQy-QF-Zbx" firstAttribute="top" secondItem="zB9-y3-InP" secondAttribute="top" id="7eA-Bg-IoG"/>
                                     <constraint firstItem="3LN-zL-pgL" firstAttribute="centerY" secondItem="zB9-y3-InP" secondAttribute="centerY" id="A6i-4Y-mDC"/>
                                     <constraint firstItem="xWw-ji-C9N" firstAttribute="leading" secondItem="VQy-QF-Zbx" secondAttribute="trailing" constant="9" id="Bdv-Sg-5W9"/>
                                     <constraint firstItem="230-7Q-BRG" firstAttribute="leading" secondItem="VQy-QF-Zbx" secondAttribute="trailing" constant="9" id="Nwl-no-cVa"/>
+                                    <constraint firstItem="m2c-Wg-AM2" firstAttribute="leading" secondItem="zB9-y3-InP" secondAttribute="leading" constant="12" id="a8U-8L-87b"/>
+                                    <constraint firstAttribute="bottom" secondItem="m2c-Wg-AM2" secondAttribute="bottom" id="duJ-mZ-Dw3"/>
                                     <constraint firstItem="VQy-QF-Zbx" firstAttribute="leading" secondItem="zB9-y3-InP" secondAttribute="leading" constant="12" id="g47-RD-zyW"/>
                                     <constraint firstItem="230-7Q-BRG" firstAttribute="top" secondItem="xWw-ji-C9N" secondAttribute="bottom" constant="1" id="pPq-MR-55O"/>
                                     <constraint firstAttribute="height" constant="43" id="r8p-Jx-a6t"/>
@@ -123,6 +133,13 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tap_discover_report" translatesAutoresizingMaskIntoConstraints="NO" id="hy5-HN-EdM">
                                         <rect key="frame" x="13" y="145" width="28" height="28"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPT-dP-6q1">
+                                        <rect key="frame" x="0.0" y="138" width="54" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="kc8-7F-UIi"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -136,9 +153,12 @@
                                     <constraint firstItem="zZR-3t-5mY" firstAttribute="top" secondItem="UWp-ke-Nw8" secondAttribute="top" id="TOh-be-Vca"/>
                                     <constraint firstAttribute="height" constant="173" id="Tfj-NT-oT0"/>
                                     <constraint firstItem="zZR-3t-5mY" firstAttribute="leading" secondItem="UWp-ke-Nw8" secondAttribute="leading" id="Yq6-mZ-0wd"/>
+                                    <constraint firstAttribute="bottom" secondItem="KPT-dP-6q1" secondAttribute="bottom" id="Zxi-G7-QDd"/>
                                     <constraint firstAttribute="trailing" secondItem="ZXl-uP-C7D" secondAttribute="trailing" id="bMe-cG-x6L"/>
                                     <constraint firstItem="kja-5I-hDP" firstAttribute="centerX" secondItem="UWp-ke-Nw8" secondAttribute="centerX" id="bj3-0l-RCr"/>
+                                    <constraint firstAttribute="trailing" secondItem="KPT-dP-6q1" secondAttribute="trailing" id="egp-Ef-cHO"/>
                                     <constraint firstItem="YdC-fb-im6" firstAttribute="centerX" secondItem="zZR-3t-5mY" secondAttribute="centerX" id="iF3-CX-H5J"/>
+                                    <constraint firstItem="KPT-dP-6q1" firstAttribute="leading" secondItem="UWp-ke-Nw8" secondAttribute="leading" id="inO-eu-bwa"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -174,6 +194,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="cell_discover_center_button" destination="m2c-Wg-AM2" id="wgv-kM-E2v"/>
                 <outlet property="cell_discover_comment_label" destination="ZXl-uP-C7D" id="bAr-uY-Zjx"/>
                 <outlet property="cell_discover_content_label" destination="CHJ-4f-O9P" id="pWY-9f-iRK"/>
                 <outlet property="cell_discover_follow_button" destination="3LN-zL-pgL" id="VhK-cC-JEe"/>
@@ -181,6 +202,7 @@
                 <outlet property="cell_discover_like_button" destination="zZR-3t-5mY" id="ecz-Q0-tA4"/>
                 <outlet property="cell_discover_like_label" destination="YdC-fb-im6" id="PV2-b7-lYk"/>
                 <outlet property="cell_discover_name_label" destination="xWw-ji-C9N" id="Kny-sF-XIs"/>
+                <outlet property="cell_discover_report_button" destination="KPT-dP-6q1" id="aQn-3u-LwV"/>
                 <outlet property="cell_discover_time_label" destination="230-7Q-BRG" id="lvP-Rf-oh3"/>
                 <outlet property="cell_discover_user_avatar" destination="VQy-QF-Zbx" id="oqK-z7-iwB"/>
             </connections>

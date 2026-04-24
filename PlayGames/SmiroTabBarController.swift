@@ -37,19 +37,27 @@ class SmiroTabBarController: UITabBarController {
             selectedImage: UIImage(named: "tabbar_star_s")?.withRenderingMode(.alwaysOriginal)
         )
         
-        let chimi_mine = UINavigationController(rootViewController: UIViewController())
+        let chimi_mine = UINavigationController(rootViewController: CreateOnlineViewController())
         chimi_mine.tabBarItem = UITabBarItem(
             title: nil,
             image: UIImage(named: "tabbar_add")?.withRenderingMode(.alwaysOriginal),
             selectedImage: UIImage(named: "tabbar_add")?.withRenderingMode(.alwaysOriginal)
         )
-        [chimi_home, chimi_find, chimi_mine].forEach {
+        let centerMessage = UINavigationController(rootViewController: CenterMessageViewController())
+        centerMessage.tabBarItem = UITabBarItem(
+            title: nil,
+            image: UIImage(named: "tabbar_note")?.withRenderingMode(.alwaysOriginal),
+            selectedImage: UIImage(named: "tabbar_note_s")?.withRenderingMode(.alwaysOriginal)
+        )
+        
+        
+        [chimi_home, chimi_find, chimi_mine, centerMessage].forEach {
             $0.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -12, right: 0)
             $0.navigationBar.setBackgroundImage(UIImage(), for: .default)
             $0.navigationBar.shadowImage = UIImage()
             $0.navigationBar.isTranslucent = true
         }
-        self.viewControllers = [chimi_home, chimi_find, chimi_mine]
+        self.viewControllers = [chimi_home, chimi_find, chimi_mine, centerMessage]
     }
 
 

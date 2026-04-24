@@ -11,7 +11,11 @@ class PostVideoDynamicVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    @IBAction func animateGameCommunityPopupViewPresentationWithSpringEffect(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func post_selectAddPhotoWithVideoClick(_ sender: UIButton) {
         
     }
