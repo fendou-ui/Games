@@ -3,6 +3,7 @@ import UIKit
 
 class OnlineCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var online_room_count_label: UILabel!
     @IBOutlet weak var online_bg_image: UIImageView!
     @IBOutlet weak var report_button: UIButton!
     @IBOutlet weak var online_avatar_imageView1: UIImageView!

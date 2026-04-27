@@ -1,5 +1,6 @@
 
 import UIKit
+import AVFoundation
 
 class OnlineViewController: UIViewController {
 
@@ -11,21 +12,74 @@ class OnlineViewController: UIViewController {
     @IBOutlet weak var please_desc_label: UILabel!
     @IBOutlet weak var please_yellow_button: UIButton!
     @IBOutlet weak var user_love_button: UIButton!
+    @IBOutlet weak var channel_replay_online_view: UIView! // 直播视频的view
     
     var online_gifts_view = OnlineGiftsView()
     var report_black_view = PlayReportBlackView()
+    
+    var replayStreamVideoFilename: String?
+    var chatroomRoomData: [String: Any] = [:]
+    private var broadcastPlayerInstance: AVPlayer?
+    private var broadcastPlayerLayer: AVPlayerLayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUIReportBlackView()
         user_avatar_image.layer.borderColor = UIColor.white.cgColor
         setupUIGiftsView()
+        configureChannelReplayVideoStream()
+        bindChatroomDisplayInfo()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "OnlineTableViewCell", bundle: nil), forCellReuseIdentifier: "online")
         
         view.addSubview(please_note_view)
         please_note_view.frame =  CGRect(x: 0, y: 1200, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        broadcastPlayerLayer?.frame = channel_replay_online_view.bounds
+    }
+    
+    // 更新房间数据
+    func bindChatroomDisplayInfo() {
+        if let name = chatroomRoomData["broadcastcaster_host_nickname_commentary"] as? String {
+            user_name_label.text = name
+        }
+        if let avatar = chatroomRoomData["voiceovermicrophone_host_avatarimage_headset"] as? String {
+            user_avatar_image.image = UIImage(named: avatar)
+        }
+        if let count = chatroomRoomData["spectatorlobby_online_viewercount_matchmaking"] as? String {
+            user_people_number_label.text = count
+        }
+    }
+    
+    // 创建直播视频
+    func configureChannelReplayVideoStream() {
+        guard let filename = replayStreamVideoFilename,
+              let videoPath = Bundle.main.path(forResource: filename, ofType: "mp4") else { return }
+        
+        let videoURL = URL(fileURLWithPath: videoPath)
+        broadcastPlayerInstance = AVPlayer(url: videoURL)
+        
+        let layerInstance = AVPlayerLayer(player: broadcastPlayerInstance)
+        layerInstance.frame = channel_replay_online_view.bounds
+        layerInstance.videoGravity = .resizeAspectFill
+        channel_replay_online_view.layer.addSublayer(layerInstance)
+        broadcastPlayerLayer = layerInstance
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loopReplayStreamFromBeginning), name: .AVPlayerItemDidPlayToEndTime, object: broadcastPlayerInstance?.currentItem)
+        broadcastPlayerInstance?.play()
+    }
+    
+    @objc func loopReplayStreamFromBeginning() {
+        broadcastPlayerInstance?.seek(to: .zero)
+        broadcastPlayerInstance?.play()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func setupUIReportBlackView() {
@@ -94,7 +148,12 @@ extension OnlineViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension OnlineViewController: PlayReportBlackViewDelegate {
-    func playReportBlackViewDelegateSuccess() {
-        self.navigationController?.popViewController(animated: true)
+    func playReportBlackViewDelegateSuccess(rateLimitTag: Int) {
+        if rateLimitTag == 311 {
+            
+        }
+        else {
+            
+        }
     }
 }

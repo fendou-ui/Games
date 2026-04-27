@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnlineViewController" customModule="PlayGames" customModuleProvider="target">
             <connections>
+                <outlet property="channel_replay_online_view" destination="U8S-oH-Dao" id="Chc-Si-LT2"/>
                 <outlet property="please_desc_label" destination="6GW-Ct-KnC" id="sGB-q1-cD3"/>
                 <outlet property="please_note_view" destination="Eie-ck-O87" id="Ycl-Vr-sK2"/>
                 <outlet property="please_yellow_button" destination="a70-yp-zZX" id="J60-zg-46a"/>
@@ -29,6 +30,10 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="online_bg" translatesAutoresizingMaskIntoConstraints="NO" id="MFd-7X-DOl">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8S-oH-Dao">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kRl-Pm-nAc">
                     <rect key="frame" x="0.0" y="63" width="393" height="36"/>
                     <subviews>
@@ -247,6 +252,7 @@
                 <constraint firstItem="kRl-Pm-nAc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3T4-b8-msE"/>
                 <constraint firstItem="Q1y-H5-ku8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="23" id="5gj-U7-ehm"/>
                 <constraint firstItem="KqN-1w-e3T" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="6LT-Pg-tvg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="U8S-oH-Dao" secondAttribute="trailing" id="9Az-7d-SGc"/>
                 <constraint firstItem="MFd-7X-DOl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="9Dz-fr-N3W"/>
                 <constraint firstItem="KqN-1w-e3T" firstAttribute="centerY" secondItem="Q1y-H5-ku8" secondAttribute="centerY" id="AjC-eI-orn"/>
                 <constraint firstAttribute="bottom" secondItem="mOg-Aa-jy0" secondAttribute="bottom" id="AjU-iz-EFz"/>
@@ -256,10 +262,13 @@
                 <constraint firstItem="ilb-ir-9y3" firstAttribute="top" secondItem="Q1y-H5-ku8" secondAttribute="bottom" constant="12" id="Qwf-4F-kMz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KqN-1w-e3T" secondAttribute="trailing" constant="78" id="Suk-bQ-Vym"/>
                 <constraint firstItem="mOg-Aa-jy0" firstAttribute="top" secondItem="Q1y-H5-ku8" secondAttribute="bottom" constant="170" id="T5B-df-48i"/>
+                <constraint firstItem="U8S-oH-Dao" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WA9-wj-6e6"/>
                 <constraint firstItem="MFd-7X-DOl" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bvV-51-ZyO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MFd-7X-DOl" secondAttribute="trailing" id="f7k-bd-19V"/>
                 <constraint firstItem="ilb-ir-9y3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lXc-wG-RC0"/>
+                <constraint firstAttribute="bottom" secondItem="U8S-oH-Dao" secondAttribute="bottom" id="qvH-xM-VRs"/>
                 <constraint firstItem="kRl-Pm-nAc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="4" id="qvX-i3-uhC"/>
+                <constraint firstItem="U8S-oH-Dao" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="r52-8U-1sk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Q1y-H5-ku8" secondAttribute="trailing" constant="63" id="rhc-NU-nSH"/>
                 <constraint firstItem="mOg-Aa-jy0" firstAttribute="top" secondItem="ilb-ir-9y3" secondAttribute="bottom" id="vSe-QY-Kqc"/>
             </constraints>

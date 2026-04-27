@@ -7,11 +7,25 @@ class SmiroViewController: UIViewController {
     @IBOutlet weak var video_collectionView: UICollectionView!
     @IBOutlet weak var follow_button: UIButton!
     @IBOutlet weak var popular_button: UIButton!
+    
+    var chatroomList: [[String: Any]] = []
+    var report_black_view = PlayReportBlackView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         follow_button.isSelected = true
+        chatroomList = GameDataManager.shared.seriescontentOnlineChatroomlistCreatorinfluencer()
         setupUIOnlineCollectionView()
         setupUIShortVideoCollectionView()
+        setupUIReportBlackView()
+    }
+    
+    func setupUIReportBlackView() {
+        report_black_view = UINib(nibName: "PlayReportBlackView", bundle: nil).instantiate(withOwner: self, options: nil).first as! PlayReportBlackView
+        report_black_view.delegate = self
+        guard let window = GameDataManager.shared.coordinatordispatcherKeyWindow else { return }
+        window.addSubview(report_black_view)
+        report_black_view.frame = CGRect(x: 0, y: 1200, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +85,7 @@ class SmiroViewController: UIViewController {
 extension SmiroViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == online_collectionView {
-            return 5
+            return chatroomList.count
         }
         return 6
     }
@@ -80,7 +94,23 @@ extension SmiroViewController: UICollectionViewDataSource, UICollectionViewDeleg
         if collectionView == online_collectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "online", for: indexPath) as! OnlineCollectionViewCell
             cell.backgroundColor = .clear
+            let room = chatroomList[indexPath.item]
+            cell.online_title_label.text = room["hostguest_chatroom_displaytitle_collaboration"] as? String
+            cell.online_room_count_label.text = "\(room["spectatorlobby_online_viewercount_matchmaking"] as? String ?? "6") Online"
+            if let bgName = room["promotionbrandingsponsorship_chatroom_backgroundcover_advertisement"] as? String {
+                cell.online_bg_image.image = UIImage(named: bgName)
+            }
+            if let avatars = room["acquisitionoptimization_chatroom_memberavatars_experiment"] as? [String] {
+                let imageViews = [cell.online_avatar_imageView1, cell.online_avatar_imageView2, cell.online_avatar_imageView3, cell.online_avatar_imageView4, cell.online_avatar_imageView5]
+                for (i, iv) in imageViews.enumerated() {
+                    if i < avatars.count {
+                        iv?.image = UIImage(named: avatars[i])
+                    }
+                }
+            }
             
+            cell.report_button.tag = indexPath.item
+            cell.report_button.addTarget(self, action: #selector(reportQueueConcurrencyThrottling(_ :)), for: .touchUpInside)
             return cell
         }
         
@@ -92,7 +122,10 @@ extension SmiroViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == online_collectionView {
-            let onlineVC = OnlineViewController()
+            let room = chatroomList[indexPath.item]
+            let onlineVC = OnlineViewController(nibName: "OnlineViewController", bundle: nil)
+            onlineVC.replayStreamVideoFilename = room["monetization_chatroom_videofile_conversionretention"] as? String
+            onlineVC.chatroomRoomData = room
             onlineVC.modalPresentationStyle = .fullScreen
             present(onlineVC, animated: true, completion: nil)
         }else {
@@ -101,5 +134,27 @@ extension SmiroViewController: UICollectionViewDataSource, UICollectionViewDeleg
             navigationController?.pushViewController(openPlayerVC, animated: true)
         }
         
+    }
+    
+    @objc func reportQueueConcurrencyThrottling(_ sender: UIButton) {
+        guard let window = GameDataManager.shared.coordinatordispatcherKeyWindow else { return }
+        window.addSubview(report_black_view)
+        report_black_view.frame = CGRect(x: 0, y: 1200, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        UIView.animate(withDuration: 0.31) {
+            self.report_black_view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        }
+    }
+    
+}
+
+extension SmiroViewController: PlayReportBlackViewDelegate {
+
+    func playReportBlackViewDelegateSuccess(rateLimitTag: Int) {
+        if rateLimitTag == 311 { // 举报
+            GameDataManager.shared.throttlingburst_appenduser_toblacklist_spikesimulation("GamerKing")
+        }
+        else {
+            
+        }
     }
 }

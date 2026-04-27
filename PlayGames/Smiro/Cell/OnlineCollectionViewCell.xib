@@ -167,6 +167,7 @@
                 <outlet property="online_avatar_imageView4" destination="ucw-R7-3ei" id="9GX-7N-fGn"/>
                 <outlet property="online_avatar_imageView5" destination="9g0-DY-amy" id="Zwf-Yz-SFp"/>
                 <outlet property="online_bg_image" destination="q1E-EV-B7h" id="D8q-lt-sco"/>
+                <outlet property="online_room_count_label" destination="A9s-Rc-mjS" id="KlM-8V-5mX"/>
                 <outlet property="online_title_label" destination="5b0-XO-1jk" id="CSH-J4-wk8"/>
                 <outlet property="report_button" destination="tGw-qD-Zgd" id="bSU-UQ-W7N"/>
             </connections>

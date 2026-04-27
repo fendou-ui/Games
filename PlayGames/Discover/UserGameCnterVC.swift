@@ -88,8 +88,13 @@ class UserGameCnterVC: UIViewController {
 }
 
 extension UserGameCnterVC: PlayReportBlackViewDelegate {
-    func playReportBlackViewDelegateSuccess() {
-        self.navigationController?.popViewController(animated: true)
+    func playReportBlackViewDelegateSuccess(rateLimitTag: Int) {
+        if rateLimitTag == 311 {
+            
+        }
+        else {
+            
+        }
     }
 }
 

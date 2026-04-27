@@ -43,4 +43,10 @@ extension CenterMessageViewController: UITableViewDataSource, UITableViewDelegat
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chatVC = FriendsChatViewController()
+        chatVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(chatVC, animated: true)
+    }
 }

@@ -125,10 +125,9 @@
                         <constraint firstItem="C2b-8V-MqX" firstAttribute="top" secondItem="C9T-uG-Cdr" secondAttribute="top" id="yVD-MT-lTI"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yKv-P8-er6">
-                    <rect key="frame" x="33" y="224" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yKv-P8-er6">
+                    <rect key="frame" x="0.0" y="112" width="393" height="658"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -136,14 +135,18 @@
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nXH-JY-y4G" secondAttribute="trailing" id="4Cx-YL-Xv6"/>
                 <constraint firstAttribute="bottom" secondItem="CeM-Cc-4BA" secondAttribute="bottom" id="4Zy-Is-2o9"/>
+                <constraint firstItem="yKv-P8-er6" firstAttribute="top" secondItem="C9T-uG-Cdr" secondAttribute="bottom" constant="10" id="66O-1s-buz"/>
                 <constraint firstAttribute="trailing" secondItem="CeM-Cc-4BA" secondAttribute="trailing" id="Ec5-lP-uFp"/>
+                <constraint firstItem="CeM-Cc-4BA" firstAttribute="top" secondItem="yKv-P8-er6" secondAttribute="bottom" id="OKY-a8-uUj"/>
                 <constraint firstItem="nXH-JY-y4G" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PFM-lM-Rmv"/>
                 <constraint firstAttribute="bottom" secondItem="nXH-JY-y4G" secondAttribute="bottom" id="UTP-md-wiF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="C9T-uG-Cdr" secondAttribute="trailing" id="aSr-fB-p8q"/>
+                <constraint firstItem="yKv-P8-er6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fhc-b3-gs0"/>
                 <constraint firstItem="C9T-uG-Cdr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ftK-am-kPJ"/>
                 <constraint firstItem="CeM-Cc-4BA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="gfZ-3B-Hx7"/>
                 <constraint firstItem="nXH-JY-y4G" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nfm-pm-pBv"/>
                 <constraint firstItem="C9T-uG-Cdr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ofe-r3-Iem"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yKv-P8-er6" secondAttribute="trailing" id="yyO-58-zbI"/>
             </constraints>
             <point key="canvasLocation" x="-54" y="-142"/>
         </view>

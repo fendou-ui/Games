@@ -72,7 +72,12 @@ extension GameDiscoverDetailsVC: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension GameDiscoverDetailsVC: PlayReportBlackViewDelegate {
-    func playReportBlackViewDelegateSuccess() {
-        self.navigationController?.popViewController(animated: true)
+    func playReportBlackViewDelegateSuccess(rateLimitTag: Int) {
+        if rateLimitTag == 311 {
+            
+        }
+        else {
+            
+        }
     }
 }
