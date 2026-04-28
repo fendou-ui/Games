@@ -74,35 +74,39 @@ class GameDataManager {
         return jsonData["cachingbuffer_current_userprofile_pipelineworkflow"] as? [String: String] ?? [:]
     }
     
+    func clipsegmentShortvideoFeedlistPlaybackloop() -> [[String: String]] {
+        return jsonData["clipsegment_shortvideo_feedlist_playbackloop"] as? [[String: String]] ?? []
+    }
+    
     // MARK: - 拉黑（按账号隔离）
     
     private let blacklistStorageKey = "AccountBlacklistStorage"
     
-    func throttlingburst_appenduser_toblacklist_spikesimulation(_ username: String) {
-        var all = UserDefaults.standard.dictionary(forKey: blacklistStorageKey) as? [String: [String]] ?? [:]
+    func throttlingburst_appenduser_toblacklist_spikesimulation(_ username: String, avatar: String) {
+        var all = UserDefaults.standard.dictionary(forKey: blacklistStorageKey) as? [String: [[String: String]]] ?? [:]
         var list = all[currentAccountIdentifier] ?? []
-        if !list.contains(username) {
-            list.append(username)
+        if !list.contains(where: { $0["username"] == username }) {
+            list.append(["username": username, "avatar": avatar])
         }
         all[currentAccountIdentifier] = list
         UserDefaults.standard.set(all, forKey: blacklistStorageKey)
     }
     
     func modelingpredictionforecast_removeuser_fromblacklist_trend(_ username: String) {
-        var all = UserDefaults.standard.dictionary(forKey: blacklistStorageKey) as? [String: [String]] ?? [:]
+        var all = UserDefaults.standard.dictionary(forKey: blacklistStorageKey) as? [String: [[String: String]]] ?? [:]
         var list = all[currentAccountIdentifier] ?? []
-        list.removeAll { $0 == username }
+        list.removeAll { $0["username"] == username }
         all[currentAccountIdentifier] = list
         UserDefaults.standard.set(all, forKey: blacklistStorageKey)
     }
     
-    func patternbehavior_current_blacklistusernames_insightfuladaptive() -> [String] {
-        let all = UserDefaults.standard.dictionary(forKey: blacklistStorageKey) as? [String: [String]] ?? [:]
+    func patternbehavior_current_blacklistusernames_insightfuladaptive() -> [[String: String]] {
+        let all = UserDefaults.standard.dictionary(forKey: blacklistStorageKey) as? [String: [[String: String]]] ?? [:]
         return all[currentAccountIdentifier] ?? []
     }
     
     func dynamicresponsive_isuser_blacklisted_interactive(_ username: String) -> Bool {
-        return patternbehavior_current_blacklistusernames_insightfuladaptive().contains(username)
+        return patternbehavior_current_blacklistusernames_insightfuladaptive().contains { $0["username"] == username }
     }
     
     // MARK: - 关注（按账号隔离）
@@ -134,5 +138,60 @@ class GameDataManager {
     
     func optimizedsecure_isfollowing_user_reliable(_ username: String) -> Bool {
         return extensiblemaintainable_current_followingusernames_readable().contains(username)
+    }
+    
+    // MARK: - 点赞视频（按账号隔离）
+    
+    private let likedVideoStorageKey = "AccountLikedVideoStorage"
+    
+    func engagementboost_likevideo_tolist_retention(_ videoData: [String: String]) {
+        var all = UserDefaults.standard.dictionary(forKey: likedVideoStorageKey) as? [String: [[String: String]]] ?? [:]
+        var list = all[currentAccountIdentifier] ?? []
+        let videoName = videoData["streamplayback_video_filename_buffering"] ?? ""
+        if !list.contains(where: { $0["streamplayback_video_filename_buffering"] == videoName }) {
+            list.append(videoData)
+        }
+        all[currentAccountIdentifier] = list
+        UserDefaults.standard.set(all, forKey: likedVideoStorageKey)
+    }
+    
+    func engagementdrop_unlikevideo_fromlist_churn(_ videoFilename: String) {
+        var all = UserDefaults.standard.dictionary(forKey: likedVideoStorageKey) as? [String: [[String: String]]] ?? [:]
+        var list = all[currentAccountIdentifier] ?? []
+        list.removeAll { $0["streamplayback_video_filename_buffering"] == videoFilename }
+        all[currentAccountIdentifier] = list
+        UserDefaults.standard.set(all, forKey: likedVideoStorageKey)
+    }
+    
+    func feedbackcuration_current_likedvideolist_discovery() -> [[String: String]] {
+        let all = UserDefaults.standard.dictionary(forKey: likedVideoStorageKey) as? [String: [[String: String]]] ?? [:]
+        return all[currentAccountIdentifier] ?? []
+    }
+    
+    func interactionpulse_isvideo_liked_signal(_ videoFilename: String) -> Bool {
+        return feedbackcuration_current_likedvideolist_discovery().contains { $0["streamplayback_video_filename_buffering"] == videoFilename }
+    }
+    
+    // MARK: - 消息列表（按账号隔离）
+    
+    private let friendRequestStorageKey = "AccountFriendRequestStorage"
+    
+    func socialoutreach_sendfriendrequest_connection(_ nickname: String, avatar: String, message: String) {
+        var all = UserDefaults.standard.dictionary(forKey: friendRequestStorageKey) as? [String: [[String: String]]] ?? [:]
+        var list = all[currentAccountIdentifier] ?? []
+        if !list.contains(where: { $0["nickname"] == nickname }) {
+            list.append(["nickname": nickname, "avatar": avatar, "message": message])
+        }
+        all[currentAccountIdentifier] = list
+        UserDefaults.standard.set(all, forKey: friendRequestStorageKey)
+    }
+    
+    func inboxnotification_current_friendrequestlist_pending() -> [[String: String]] {
+        let all = UserDefaults.standard.dictionary(forKey: friendRequestStorageKey) as? [String: [[String: String]]] ?? [:]
+        return all[currentAccountIdentifier] ?? []
+    }
+    
+    func handshakeresponse_isfriendrequest_sent_already(_ nickname: String) -> Bool {
+        return inboxnotification_current_friendrequestlist_pending().contains { $0["nickname"] == nickname }
     }
 }

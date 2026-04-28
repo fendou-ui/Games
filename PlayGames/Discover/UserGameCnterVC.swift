@@ -4,6 +4,7 @@ import UIKit
 class UserGameCnterVC: UIViewController {
 
     @IBOutlet weak var user_center_avatar_imageView: UIImageView!
+    @IBOutlet weak var big_user_avatar_imageView: UIImageView!
     @IBOutlet weak var user_center_name_label: UILabel!
     @IBOutlet weak var user_center_fans_label: UILabel!
     @IBOutlet weak var user_center_follow_label: UILabel!
@@ -13,6 +14,7 @@ class UserGameCnterVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     var report_black_view = PlayReportBlackView()
+    var userData: [String: String] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,12 @@ class UserGameCnterVC: UIViewController {
         user_center_avatar_imageView.layer.cornerRadius = 28.5
         user_center_avatar_imageView.layer.borderWidth = 2
         user_center_avatar_imageView.layer.borderColor = UIColor.white.cgColor
+        
+        if let avatarName = userData["avatar"] {
+            user_center_avatar_imageView.image = UIImage(named: avatarName)
+            big_user_avatar_imageView.image = UIImage(named: avatarName)
+        }
+        user_center_name_label.text = userData["nickname"]
     }
     
     func setupUIReportBlackView() {
@@ -147,3 +155,36 @@ extension UserGameCnterVC: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
+/**
+ 
+ Dear App Review Team,
+ 
+ Thank you so much for taking the time to review our app and for the detailed feedback — we truly appreciate it, especially as first-time developers on the platform.
+ 
+ We've carefully reviewed the issues raised and would like to outline how we plan to address each one:
+ 
+ Regarding Guideline 1.2 - User-Generated Content:
+ 
+ We want to assure you that our app already has the following safety mechanisms in place:
+ 
+ 1、EULA / Terms of Use – Users are required to agree to our User Agreement and Privacy Policy before signing in. We will further enhance this by presenting a clear EULA prompt upon first login that explicitly states our zero-tolerance policy for objectionable content and abusive behavior.
+ 
+ 2、Content Filtering – Our app includes built-in content moderation to filter inappropriate material.
+ 
+ 3、Flagging Mechanism – Users can report objectionable content or abusive users via the "Report User" feature, which is accessible from user profiles and content pages.
+ 
+ 4、Blocking Mechanism – Users can block abusive users through the "Block User" option. Blocked users are immediately hidden from all content feeds, messages, and user lists.
+ 
+ 5、24-Hour Response Commitment – We are committed to acting on all objectionable content reports within 24 hours, including removing the content and ejecting the offending user.
+ 
+ Regarding Guideline 2.1(a) - Information Needed:
+ 
+We apologize for the inconvenience. To ensure you can fully verify all features, we have pre-populated the app with chat content. Upon logging in, you will find an existing conversation with a user in the Messages tab, which you can tap into to experience the full chat functionality — including sending messages and video chat.
+ 
+ We will also include a screen recording demonstrating the EULA agreement flow, the report mechanism, and the block mechanism as requested.
+ 
+ Warm regards,
+ Elstyl Team
+ 
+ */

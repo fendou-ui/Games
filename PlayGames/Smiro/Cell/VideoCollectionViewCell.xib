@@ -94,6 +94,14 @@
                 <constraint firstAttribute="trailing" secondItem="0M3-kb-XrS" secondAttribute="trailing" constant="8" id="oT6-zu-ffY"/>
                 <constraint firstItem="EAK-hH-72F" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="w2Y-ZH-Dab"/>
             </constraints>
+            <connections>
+                <outlet property="comment_video_count_label" destination="KkG-os-uRW" id="y0n-Rn-93t"/>
+                <outlet property="like_video_button" destination="hLc-Nm-ap6" id="p9F-8q-PTZ"/>
+                <outlet property="like_video_count_label" destination="HRV-n2-5kI" id="pyx-nR-XrW"/>
+                <outlet property="report_video_button" destination="yvN-e5-VSd" id="QG1-VK-ZLb"/>
+                <outlet property="video_covert_imageView" destination="EAK-hH-72F" id="w62-tp-gIr"/>
+                <outlet property="video_desc_label" destination="A7c-jd-Iv5" id="d1g-gG-PFw"/>
+            </connections>
             <point key="canvasLocation" x="138.1679389312977" y="19.366197183098592"/>
         </collectionViewCell>
     </objects>

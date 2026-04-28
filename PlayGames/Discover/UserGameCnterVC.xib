@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserGameCnterVC" customModule="PlayGames" customModuleProvider="target">
             <connections>
+                <outlet property="big_user_avatar_imageView" destination="B8A-8h-TnL" id="loW-Be-0qZ"/>
                 <outlet property="collectionView" destination="iHs-PS-njf" id="9U3-lv-nwc"/>
                 <outlet property="tableView" destination="asZ-76-3TG" id="hCY-gn-08U"/>
                 <outlet property="user_center_avatar_imageView" destination="HSA-a0-rB7" id="vih-cb-CaU"/>
@@ -48,7 +49,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mS4-SY-qtS">
                             <rect key="frame" x="0.0" y="420" width="393" height="190"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HSA-a0-rB7">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HSA-a0-rB7">
                                     <rect key="frame" x="21" y="56" width="57" height="57"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="57" id="8JI-Qj-x65"/>

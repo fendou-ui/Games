@@ -150,10 +150,11 @@ extension OnlineViewController: UITableViewDelegate, UITableViewDataSource {
 extension OnlineViewController: PlayReportBlackViewDelegate {
     func playReportBlackViewDelegateSuccess(rateLimitTag: Int) {
         if rateLimitTag == 311 {
-            
+            GameLoadingHUD.gameLoadingSuccess("Report submitted, will be reviewed within 24 hours", in: self.view)
         }
         else {
-            
+            GameDataManager.shared.throttlingburst_appenduser_toblacklist_spikesimulation(chatroomRoomData["broadcastcaster_host_nickname_commentary"] as! String, avatar: chatroomRoomData["voiceovermicrophone_host_avatarimage_headset"] as! String)
+            dismiss(animated: true, completion: nil)
         }
     }
 }

@@ -8,13 +8,25 @@ class SmiroViewController: UIViewController {
     @IBOutlet weak var follow_button: UIButton!
     @IBOutlet weak var popular_button: UIButton!
     
+    var isShort: Bool = false
+    var tapUserName: String = ""
+    var tapUserAvatar: String = ""
     var chatroomList: [[String: Any]] = []
+    var shortVideoList: [[String: String]] = []
     var report_black_view = PlayReportBlackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         follow_button.isSelected = true
-        chatroomList = GameDataManager.shared.seriescontentOnlineChatroomlistCreatorinfluencer()
+        chatroomList = GameDataManager.shared.seriescontentOnlineChatroomlistCreatorinfluencer().filter { room in
+            let nickname = room["broadcastcaster_host_nickname_commentary"] as? String ?? ""
+            return !GameDataManager.shared.dynamicresponsive_isuser_blacklisted_interactive(nickname)
+        }
+        
+        shortVideoList = GameDataManager.shared.clipsegmentShortvideoFeedlistPlaybackloop().filter { video in
+            let nickname = video["uploadercreator_video_publishernickname_channel"] ?? ""
+            return !GameDataManager.shared.dynamicresponsive_isuser_blacklisted_interactive(nickname)
+        }
         setupUIOnlineCollectionView()
         setupUIShortVideoCollectionView()
         setupUIReportBlackView()
@@ -31,6 +43,15 @@ class SmiroViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+        chatroomList.removeAll { room in
+            (room["broadcastcaster_host_nickname_commentary"] as? String) == tapUserName
+        }
+        online_collectionView.reloadData()
+        
+        shortVideoList.removeAll { room in
+            (room["uploadercreator_video_publishernickname_channel"]) == tapUserName
+        }
+        video_collectionView.reloadData()
     }
 
     @IBAction func titleSelectFollowAndPopularClick(_ sender: UIButton) {
@@ -87,7 +108,7 @@ extension SmiroViewController: UICollectionViewDataSource, UICollectionViewDeleg
         if collectionView == online_collectionView {
             return chatroomList.count
         }
-        return 6
+        return shortVideoList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -116,7 +137,22 @@ extension SmiroViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "video", for: indexPath) as! VideoCollectionViewCell
         cell.backgroundColor = .clear
+        let video = shortVideoList[indexPath.item]
+        cell.video_desc_label.text = video["captionsubtitle_video_description_overlay"]
+        cell.like_video_count_label.text = video["engagementinteraction_video_likecount_reaction"]
+        cell.comment_video_count_label.text = video["threadreply_video_commentcount_discussion"]
+        if let coverName = video["thumbnailpreview_video_coverimage_snapshot"] {
+            cell.video_covert_imageView.image = UIImage(named: coverName)
+        }
+        let videoFilename = video["streamplayback_video_filename_buffering"] ?? ""
+        if GameDataManager.shared.interactionpulse_isvideo_liked_signal(videoFilename) {
+            cell.like_video_button.tintColor = UIColor.systemYellow
+        } else {
+            cell.like_video_button.tintColor = UIColor.white
+        }
         
+        cell.report_video_button.tag = indexPath.item
+        cell.report_video_button.addTarget(self, action: #selector(reportShortVideoConcurrencyThrottling(_ :)), for: .touchUpInside)
         return cell
     }
     
@@ -129,7 +165,9 @@ extension SmiroViewController: UICollectionViewDataSource, UICollectionViewDeleg
             onlineVC.modalPresentationStyle = .fullScreen
             present(onlineVC, animated: true, completion: nil)
         }else {
+            let video = shortVideoList[indexPath.item]
             let openPlayerVC = OpenPlayerVideoVC()
+            openPlayerVC.shortVideoData = video
             openPlayerVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(openPlayerVC, animated: true)
         }
@@ -137,6 +175,23 @@ extension SmiroViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     @objc func reportQueueConcurrencyThrottling(_ sender: UIButton) {
+        isShort = false
+        let room = chatroomList[sender.tag]
+        tapUserName = room["broadcastcaster_host_nickname_commentary"] as! String
+        tapUserAvatar = room["voiceovermicrophone_host_avatarimage_headset"] as? String ?? ""
+        guard let window = GameDataManager.shared.coordinatordispatcherKeyWindow else { return }
+        window.addSubview(report_black_view)
+        report_black_view.frame = CGRect(x: 0, y: 1200, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        UIView.animate(withDuration: 0.31) {
+            self.report_black_view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        }
+    }
+    
+    @objc func reportShortVideoConcurrencyThrottling(_ sender: UIButton) {
+        isShort = true
+        let shortVideo_dict = shortVideoList[sender.tag]
+        tapUserName = shortVideo_dict["uploadercreator_video_publishernickname_channel"]!
+        tapUserAvatar = shortVideo_dict["voiceovermicrophone_host_avatarimage_headset"] ?? ""
         guard let window = GameDataManager.shared.coordinatordispatcherKeyWindow else { return }
         window.addSubview(report_black_view)
         report_black_view.frame = CGRect(x: 0, y: 1200, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
@@ -151,9 +206,23 @@ extension SmiroViewController: PlayReportBlackViewDelegate {
 
     func playReportBlackViewDelegateSuccess(rateLimitTag: Int) {
         if rateLimitTag == 311 { // 举报
-            GameDataManager.shared.throttlingburst_appenduser_toblacklist_spikesimulation("GamerKing")
+            GameLoadingHUD.gameLoadingSuccess("Report submitted, will be reviewed within 24 hours", in: self.view)
         }
-        else {
+        else { // 拉黑
+            GameDataManager.shared.throttlingburst_appenduser_toblacklist_spikesimulation(tapUserName, avatar: tapUserAvatar)
+            // 从数据源中移除被拉黑用户的聊天室
+            if isShort == true {
+                shortVideoList.removeAll { room in
+                    (room["uploadercreator_video_publishernickname_channel"]) == tapUserName
+                }
+                video_collectionView.reloadData()
+            }
+            else {
+                chatroomList.removeAll { room in
+                    (room["broadcastcaster_host_nickname_commentary"] as? String) == tapUserName
+                }
+                online_collectionView.reloadData()
+            }
             
         }
     }

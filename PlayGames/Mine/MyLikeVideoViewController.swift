@@ -5,9 +5,13 @@ class MyLikeVideoViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var completely_empty_imageView: UIImageView!
+    var likedVideoList: [[String: String]] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUIShortVideoCollectionView() 
+        likedVideoList = GameDataManager.shared.feedbackcuration_current_likedvideolist_discovery()
+        setupUIShortVideoCollectionView()
+        completely_empty_imageView.isHidden = !likedVideoList.isEmpty
     }
     
     func setupUIShortVideoCollectionView() {
@@ -33,20 +37,26 @@ class MyLikeVideoViewController: UIViewController {
 
 extension MyLikeVideoViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return 6
+        return likedVideoList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "video", for: indexPath) as! VideoCollectionViewCell
         cell.backgroundColor = .clear
-        
+        let video = likedVideoList[indexPath.item]
+        cell.video_desc_label.text = video["captionsubtitle_video_description_overlay"]
+        cell.like_video_count_label.text = video["engagementinteraction_video_likecount_reaction"]
+        cell.comment_video_count_label.text = video["threadreply_video_commentcount_discussion"]
+        if let coverName = video["thumbnailpreview_video_coverimage_snapshot"] {
+            cell.video_covert_imageView.image = UIImage(named: coverName)
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let video = likedVideoList[indexPath.item]
         let openPlayerVC = OpenPlayerVideoVC()
+        openPlayerVC.shortVideoData = video
         openPlayerVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(openPlayerVC, animated: true)
     }

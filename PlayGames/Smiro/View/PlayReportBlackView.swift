@@ -17,7 +17,7 @@ class PlayReportBlackView: UIView {
             self.frame = CGRect(x: 0, y: 1200, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         }completion: { _ in
             if let window = GameDataManager.shared.coordinatordispatcherKeyWindow,
-               self.isDescendant(of: window) {
+               self.superview == window {
                 self.removeFromSuperview()
             }
         }
