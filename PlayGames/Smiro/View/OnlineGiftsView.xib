@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -63,7 +64,7 @@
                                         <action selector="onlineSendGiftsClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="udz-UL-QQZ"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBh-i6-x1Z">
+                                <button opaque="NO" tag="311" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBh-i6-x1Z">
                                     <rect key="frame" x="12" y="12" width="20" height="22"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="DBO-Hc-Flw"/>
@@ -71,6 +72,9 @@
                                     </constraints>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" image="gift_game_reduct_white"/>
+                                    <connections>
+                                        <action selector="onlineAddOrShaoCountClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="df6-Lx-AaA"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4m0-P2-LDN">
                                     <rect key="frame" x="76" y="12" width="20" height="22"/>
@@ -80,6 +84,9 @@
                                     </constraints>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" image="gift_game_add_white"/>
+                                    <connections>
+                                        <action selector="onlineAddOrShaoCountClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="U1d-Wa-hpe"/>
+                                    </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxi-Zf-lXd">
                                     <rect key="frame" x="35" y="13.333333333333369" width="38" height="19.333333333333329"/>

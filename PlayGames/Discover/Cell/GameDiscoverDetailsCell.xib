@@ -25,12 +25,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVR-nR-3ed">
                         <rect key="frame" x="21" y="63" width="340" height="369"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ot0-nb-2Xh">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ot0-nb-2Xh">
                                 <rect key="frame" x="13" y="17" width="314" height="335"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="9"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVr-Q4-Uks">
@@ -82,6 +83,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dynamic_content_label" destination="zZY-kP-K1u" id="yCH-ZZ-xS9"/>
+                <outlet property="dynamic_imageView" destination="Ot0-nb-2Xh" id="PsD-TJ-2Ye"/>
+                <outlet property="dynamic_likes_button" destination="jVr-Q4-Uks" id="ELO-Zl-wNo"/>
+            </connections>
             <point key="canvasLocation" x="175.57251908396947" y="82.74647887323944"/>
         </tableViewCell>
     </objects>

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +12,7 @@
             <connections>
                 <outlet property="chat_name_label" destination="vRh-2g-Tbs" id="C0p-Py-T4M"/>
                 <outlet property="chat_shoot_view" destination="mbb-K3-WbD" id="fHH-qd-hPj"/>
+                <outlet property="chat_video_close_button" destination="QH9-tR-nZR" id="17x-Mw-0VE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,7 +25,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbb-K3-WbD">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="751"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="723"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMB-PS-dfW">
@@ -72,7 +74,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QH9-tR-nZR">
-                    <rect key="frame" x="168.66666666666666" y="769" width="56" height="56"/>
+                    <rect key="frame" x="168.66666666666666" y="741" width="56" height="56"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" backgroundImage="chat_video_call_close"/>
                     <connections>
@@ -80,7 +82,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect……" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veO-6d-U3t">
-                    <rect key="frame" x="149.33333333333334" y="660" width="94.666666666666657" height="21"/>
+                    <rect key="frame" x="149.33333333333334" y="654" width="94.666666666666657" height="21"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -88,7 +90,7 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <constraints>
-                <constraint firstItem="QH9-tR-nZR" firstAttribute="top" secondItem="veO-6d-U3t" secondAttribute="bottom" constant="88" id="2Hp-7Y-DIt"/>
+                <constraint firstItem="QH9-tR-nZR" firstAttribute="top" secondItem="veO-6d-U3t" secondAttribute="bottom" constant="66" id="2Hp-7Y-DIt"/>
                 <constraint firstAttribute="bottom" secondItem="kSZ-00-c5a" secondAttribute="bottom" id="7K5-fS-F3j"/>
                 <constraint firstItem="veO-6d-U3t" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7bz-OP-ebc"/>
                 <constraint firstItem="mbb-K3-WbD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="J5b-Wc-INu"/>
@@ -102,7 +104,7 @@
                 <constraint firstItem="FMB-PS-dfW" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bLw-JT-wdS"/>
                 <constraint firstAttribute="trailing" secondItem="FMB-PS-dfW" secondAttribute="trailing" id="mFi-ey-Zzq"/>
                 <constraint firstItem="kSZ-00-c5a" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="n4r-SZ-Ma3"/>
-                <constraint firstAttribute="bottom" secondItem="QH9-tR-nZR" secondAttribute="bottom" constant="27" id="wxD-lj-k11"/>
+                <constraint firstAttribute="bottom" secondItem="QH9-tR-nZR" secondAttribute="bottom" constant="55" id="wxD-lj-k11"/>
             </constraints>
             <point key="canvasLocation" x="122.90076335877862" y="19.718309859154932"/>
         </view>

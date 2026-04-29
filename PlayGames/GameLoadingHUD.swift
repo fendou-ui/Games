@@ -228,4 +228,142 @@ class GameLoadingHUD: UIView {
         }
         return window
     }
+    
+    // MARK: - 自定义确认弹窗
+    static func overlayconfirm_alertpopup_interactionbounce(title: String, message: String, confirmTitle: String = "OK", cancelTitle: String = "Cancel", in parentView: UIView, onConfirm: @escaping () -> Void) {
+        
+        let dimscreen_backdrop_wrapper = UIView(frame: parentView.bounds)
+        dimscreen_backdrop_wrapper.tag = 9527
+        
+        let frostlayer_visual_effect = UIBlurEffect(style: .dark)
+        let frostlayer_blur_renderer = UIVisualEffectView(effect: frostlayer_visual_effect)
+        frostlayer_blur_renderer.frame = dimscreen_backdrop_wrapper.bounds
+        frostlayer_blur_renderer.alpha = 0
+        dimscreen_backdrop_wrapper.addSubview(frostlayer_blur_renderer)
+        
+        let popcard_container_panel = UIView()
+        popcard_container_panel.backgroundColor = UIColor(white: 0.13, alpha: 0.95)
+        popcard_container_panel.layer.cornerRadius = 20
+        popcard_container_panel.layer.shadowColor = UIColor.black.cgColor
+        popcard_container_panel.layer.shadowOpacity = 0.5
+        popcard_container_panel.layer.shadowOffset = CGSize(width: 0, height: 8)
+        popcard_container_panel.layer.shadowRadius = 20
+        popcard_container_panel.translatesAutoresizingMaskIntoConstraints = false
+        dimscreen_backdrop_wrapper.addSubview(popcard_container_panel)
+        
+        let warnemoji_icon_display = UILabel()
+        warnemoji_icon_display.text = "⚠️"
+        warnemoji_icon_display.font = .systemFont(ofSize: 40)
+        warnemoji_icon_display.textAlignment = .center
+        warnemoji_icon_display.translatesAutoresizingMaskIntoConstraints = false
+        popcard_container_panel.addSubview(warnemoji_icon_display)
+        
+        let heading_title_label = UILabel()
+        heading_title_label.text = title
+        heading_title_label.font = .systemFont(ofSize: 18, weight: .bold)
+        heading_title_label.textColor = .white
+        heading_title_label.textAlignment = .center
+        heading_title_label.translatesAutoresizingMaskIntoConstraints = false
+        popcard_container_panel.addSubview(heading_title_label)
+        
+        let subtitle_desc_label = UILabel()
+        subtitle_desc_label.text = message
+        subtitle_desc_label.font = .systemFont(ofSize: 14)
+        subtitle_desc_label.textColor = UIColor(white: 0.7, alpha: 1)
+        subtitle_desc_label.textAlignment = .center
+        subtitle_desc_label.numberOfLines = 0
+        subtitle_desc_label.translatesAutoresizingMaskIntoConstraints = false
+        popcard_container_panel.addSubview(subtitle_desc_label)
+        
+        let actionrow_button_stack = UIStackView()
+        actionrow_button_stack.axis = .horizontal
+        actionrow_button_stack.spacing = 12
+        actionrow_button_stack.distribution = .fillEqually
+        actionrow_button_stack.translatesAutoresizingMaskIntoConstraints = false
+        popcard_container_panel.addSubview(actionrow_button_stack)
+        
+        let dismiss_cancel_btn = UIButton(type: .system)
+        dismiss_cancel_btn.setTitle(cancelTitle, for: .normal)
+        dismiss_cancel_btn.setTitleColor(UIColor(white: 0.8, alpha: 1), for: .normal)
+        dismiss_cancel_btn.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        dismiss_cancel_btn.backgroundColor = UIColor(white: 0.25, alpha: 1)
+        dismiss_cancel_btn.layer.cornerRadius = 12
+        actionrow_button_stack.addArrangedSubview(dismiss_cancel_btn)
+        
+        let proceed_confirm_btn = UIButton(type: .system)
+        proceed_confirm_btn.setTitle(confirmTitle, for: .normal)
+        proceed_confirm_btn.setTitleColor(.white, for: .normal)
+        proceed_confirm_btn.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        proceed_confirm_btn.layer.cornerRadius = 12
+        proceed_confirm_btn.clipsToBounds = true
+        actionrow_button_stack.addArrangedSubview(proceed_confirm_btn)
+        
+        let redshift_gradient_layer = CAGradientLayer()
+        redshift_gradient_layer.colors = [
+            UIColor(red: 1, green: 0.3, blue: 0.35, alpha: 1).cgColor,
+            UIColor(red: 0.85, green: 0.15, blue: 0.3, alpha: 1).cgColor
+        ]
+        redshift_gradient_layer.startPoint = CGPoint(x: 0, y: 0.5)
+        redshift_gradient_layer.endPoint = CGPoint(x: 1, y: 0.5)
+        redshift_gradient_layer.frame = CGRect(x: 0, y: 0, width: 200, height: 48)
+        redshift_gradient_layer.cornerRadius = 12
+        proceed_confirm_btn.layer.insertSublayer(redshift_gradient_layer, at: 0)
+        
+        NSLayoutConstraint.activate([
+            popcard_container_panel.centerXAnchor.constraint(equalTo: dimscreen_backdrop_wrapper.centerXAnchor),
+            popcard_container_panel.centerYAnchor.constraint(equalTo: dimscreen_backdrop_wrapper.centerYAnchor),
+            popcard_container_panel.widthAnchor.constraint(equalToConstant: 300),
+            
+            warnemoji_icon_display.topAnchor.constraint(equalTo: popcard_container_panel.topAnchor, constant: 24),
+            warnemoji_icon_display.centerXAnchor.constraint(equalTo: popcard_container_panel.centerXAnchor),
+            
+            heading_title_label.topAnchor.constraint(equalTo: warnemoji_icon_display.bottomAnchor, constant: 12),
+            heading_title_label.leadingAnchor.constraint(equalTo: popcard_container_panel.leadingAnchor, constant: 20),
+            heading_title_label.trailingAnchor.constraint(equalTo: popcard_container_panel.trailingAnchor, constant: -20),
+            
+            subtitle_desc_label.topAnchor.constraint(equalTo: heading_title_label.bottomAnchor, constant: 8),
+            subtitle_desc_label.leadingAnchor.constraint(equalTo: popcard_container_panel.leadingAnchor, constant: 20),
+            subtitle_desc_label.trailingAnchor.constraint(equalTo: popcard_container_panel.trailingAnchor, constant: -20),
+            
+            actionrow_button_stack.topAnchor.constraint(equalTo: subtitle_desc_label.bottomAnchor, constant: 24),
+            actionrow_button_stack.leadingAnchor.constraint(equalTo: popcard_container_panel.leadingAnchor, constant: 20),
+            actionrow_button_stack.trailingAnchor.constraint(equalTo: popcard_container_panel.trailingAnchor, constant: -20),
+            actionrow_button_stack.heightAnchor.constraint(equalToConstant: 48),
+            actionrow_button_stack.bottomAnchor.constraint(equalTo: popcard_container_panel.bottomAnchor, constant: -20)
+        ])
+        
+        parentView.addSubview(dimscreen_backdrop_wrapper)
+        
+        popcard_container_panel.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        popcard_container_panel.alpha = 0
+        UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5) {
+            frostlayer_blur_renderer.alpha = 1
+            popcard_container_panel.transform = .identity
+            popcard_container_panel.alpha = 1
+        }
+        
+        dismiss_cancel_btn.addAction(UIAction { _ in
+            UIView.animate(withDuration: 0.2) {
+                popcard_container_panel.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                popcard_container_panel.alpha = 0
+                frostlayer_blur_renderer.alpha = 0
+            } completion: { _ in
+                dimscreen_backdrop_wrapper.removeFromSuperview()
+            }
+        }, for: .touchUpInside)
+        
+        proceed_confirm_btn.addAction(UIAction { _ in
+            UIView.animate(withDuration: 0.2) {
+                popcard_container_panel.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                popcard_container_panel.alpha = 0
+                frostlayer_blur_renderer.alpha = 0
+            } completion: { _ in
+                dimscreen_backdrop_wrapper.removeFromSuperview()
+                onConfirm()
+            }
+        }, for: .touchUpInside)
+        
+        proceed_confirm_btn.layoutIfNeeded()
+        redshift_gradient_layer.frame = proceed_confirm_btn.bounds
+    }
 }

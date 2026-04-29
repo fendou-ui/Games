@@ -27,7 +27,21 @@ class MyFollowingBlackListViewController: UIViewController {
         }
         if otherTag == 3 {
             title_label.text = "Follow"
+            let followingNames = GameDataManager.shared.extensiblemaintainable_current_followingusernames_readable()
+            let allVideos = GameDataManager.shared.clipsegmentShortvideoFeedlistPlaybackloop()
+            let allPosts = GameDataManager.shared.streamoverlayDiscoverPostlistEngagement()
+            follow_fans_black_list = followingNames.map { name in
+                var avatar = ""
+                if let video = allVideos.first(where: { $0["uploadercreator_video_publishernickname_channel"] == name }) {
+                    avatar = video["profileiconbadge_video_publisheravatar_verification"] ?? ""
+                } else if let post = allPosts.first(where: { $0["replayranking_publisher_displayname_leaderboard"] == name }) {
+                    avatar = post["achievementmissionquest_publisher_avatarimage_battle"] ?? ""
+                }
+                return ["username": name, "avatar": avatar]
+            }
         }
+        completely_empty_imageView.isHidden = !follow_fans_black_list.isEmpty
+        tableView.reloadData()
     }
 
     @IBAction func handleNavgationBackAction(_ sender: Any) {
@@ -49,15 +63,22 @@ extension MyFollowingBlackListViewController: UITableViewDataSource, UITableView
         follow_black.follow_black_user_name_label.text = follow_fans_black_list[indexPath.item]["username"]
         follow_black.follow_black_user_button.tag = indexPath.item
         follow_black.follow_black_user_button.addTarget(self, action: #selector(followFansBlackRemoveClick(_ :)), for: .touchUpInside)
+        if otherTag == 3 {
+            follow_black.follow_black_user_button.setImage(UIImage(named: "vhjsbdfjhew"), for: .normal)
+        }
         return follow_black
     }
     
     @objc func followFansBlackRemoveClick(_ sender: UIButton) {
         if otherTag == 1 {
             GameDataManager.shared.modelingpredictionforecast_removeuser_fromblacklist_trend(follow_fans_black_list[sender.tag]["username"] ?? "")
+            follow_fans_black_list.remove(at: sender.tag)
+            tableView.reloadData()
         }
         if otherTag == 3 {
-            
+            GameDataManager.shared.efficientrobust_unfollow_targetuser_scalableflexible(follow_fans_black_list[sender.tag]["username"] ?? "")
+            follow_fans_black_list.remove(at: sender.tag)
+            tableView.reloadData()
         }
         
         getFollowFansBlackList()

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,6 +13,7 @@
             <connections>
                 <outlet property="collectionView" destination="Pdd-Ej-YDt" id="YEr-Df-Bez"/>
                 <outlet property="completely_empty_imageView" destination="Fi1-QE-gxw" id="Pig-W7-3SH"/>
+                <outlet property="hurry_up_label" destination="laI-K4-TKo" id="iM8-dA-PNx"/>
                 <outlet property="tableView" destination="J08-gm-Oi7" id="OaP-AV-ZSF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -83,6 +85,12 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Recent_chats_message" translatesAutoresizingMaskIntoConstraints="NO" id="pEv-x7-xW1">
                     <rect key="frame" x="21" y="252.99999999999997" width="91" height="13.666666666666657"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hurry up and add me as a friend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="laI-K4-TKo">
+                    <rect key="frame" x="92.666666666666671" y="184.66666666666666" width="207.66666666666663" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -94,6 +102,7 @@
                 <constraint firstItem="gg3-Fw-MbV" firstAttribute="centerY" secondItem="BoB-gF-U6X" secondAttribute="centerY" id="7Ii-Ob-FOc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KkV-nF-11j" secondAttribute="trailing" constant="28" id="BE1-uA-8c6"/>
                 <constraint firstItem="Fi1-QE-gxw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Lbc-LA-eL7"/>
+                <constraint firstItem="laI-K4-TKo" firstAttribute="centerX" secondItem="Pdd-Ej-YDt" secondAttribute="centerX" id="MC8-tr-NaX"/>
                 <constraint firstAttribute="bottom" secondItem="jd4-Z7-3cK" secondAttribute="bottom" id="MDC-uB-vZ4"/>
                 <constraint firstItem="Pdd-Ej-YDt" firstAttribute="top" secondItem="shJ-5Z-gK5" secondAttribute="bottom" constant="18" id="MTE-KT-IVp"/>
                 <constraint firstItem="pEv-x7-xW1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="21" id="NWz-pa-bTw"/>
@@ -102,6 +111,7 @@
                 <constraint firstItem="shJ-5Z-gK5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="21" id="ZYg-rO-X9y"/>
                 <constraint firstItem="J08-gm-Oi7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="aOF-Sq-hmb"/>
                 <constraint firstItem="J08-gm-Oi7" firstAttribute="top" secondItem="pEv-x7-xW1" secondAttribute="bottom" constant="10" id="bOf-e6-AP0"/>
+                <constraint firstItem="laI-K4-TKo" firstAttribute="centerY" secondItem="Pdd-Ej-YDt" secondAttribute="centerY" id="bbl-Wg-JsG"/>
                 <constraint firstItem="Fi1-QE-gxw" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="blc-gV-eMI"/>
                 <constraint firstItem="KkV-nF-11j" firstAttribute="centerY" secondItem="shJ-5Z-gK5" secondAttribute="centerY" id="cDq-bc-f6a"/>
                 <constraint firstItem="BoB-gF-U6X" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="21" id="eTS-L0-YZD"/>

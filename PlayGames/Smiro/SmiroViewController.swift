@@ -43,13 +43,16 @@ class SmiroViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
-        chatroomList.removeAll { room in
-            (room["broadcastcaster_host_nickname_commentary"] as? String) == tapUserName
+        
+        chatroomList = GameDataManager.shared.seriescontentOnlineChatroomlistCreatorinfluencer().filter { room in
+            let nickname = room["broadcastcaster_host_nickname_commentary"] as? String ?? ""
+            return !GameDataManager.shared.dynamicresponsive_isuser_blacklisted_interactive(nickname)
         }
         online_collectionView.reloadData()
         
-        shortVideoList.removeAll { room in
-            (room["uploadercreator_video_publishernickname_channel"]) == tapUserName
+        shortVideoList = GameDataManager.shared.clipsegmentShortvideoFeedlistPlaybackloop().filter { video in
+            let nickname = video["uploadercreator_video_publishernickname_channel"] ?? ""
+            return !GameDataManager.shared.dynamicresponsive_isuser_blacklisted_interactive(nickname)
         }
         video_collectionView.reloadData()
     }
@@ -67,8 +70,9 @@ class SmiroViewController: UIViewController {
     
     @IBAction func sendVideoClick(_ sender: Any) {
         let postVideoVC = PostVideoDynamicVC()
-        postVideoVC.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(postVideoVC, animated: true)
+        postVideoVC.handshake_tag_watchdog = 1
+        postVideoVC.modalPresentationStyle = .fullScreen
+        present(postVideoVC, animated: true, completion: nil)
     }
     
     func setupUIOnlineCollectionView() {
@@ -209,21 +213,26 @@ extension SmiroViewController: PlayReportBlackViewDelegate {
             GameLoadingHUD.gameLoadingSuccess("Report submitted, will be reviewed within 24 hours", in: self.view)
         }
         else { // 拉黑
-            GameDataManager.shared.throttlingburst_appenduser_toblacklist_spikesimulation(tapUserName, avatar: tapUserAvatar)
-            // 从数据源中移除被拉黑用户的聊天室
-            if isShort == true {
-                shortVideoList.removeAll { room in
-                    (room["uploadercreator_video_publishernickname_channel"]) == tapUserName
+            GameLoadingHUD.overlayconfirm_alertpopup_interactionbounce(
+                title: "Block User",
+                message: "Are you sure you want to block this user? You will no longer see their content.",
+                confirmTitle: "Block",
+                in: self.view
+            ) {
+                GameDataManager.shared.throttlingburst_appenduser_toblacklist_spikesimulation(self.tapUserName, avatar: self.tapUserAvatar)
+                if self.isShort == true {
+                    self.shortVideoList.removeAll { room in
+                        (room["uploadercreator_video_publishernickname_channel"]) == self.tapUserName
+                    }
+                    self.video_collectionView.reloadData()
                 }
-                video_collectionView.reloadData()
-            }
-            else {
-                chatroomList.removeAll { room in
-                    (room["broadcastcaster_host_nickname_commentary"] as? String) == tapUserName
+                else {
+                    self.chatroomList.removeAll { room in
+                        (room["broadcastcaster_host_nickname_commentary"] as? String) == self.tapUserName
+                    }
+                    self.online_collectionView.reloadData()
                 }
-                online_collectionView.reloadData()
             }
-            
         }
     }
 }

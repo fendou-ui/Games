@@ -8,14 +8,26 @@ class ReauestFriendsListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var friendRequestList: [[String: String]] = []
+    var friendTag: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        friendRequestList = GameDataManager.shared.inboxnotification_current_friendrequestlist_pending()
-        completely_empty_imageView.isHidden = !friendRequestList.isEmpty
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "ReauestFriendsListTableViewCell", bundle: nil), forCellReuseIdentifier: "friendlist")
+        
+        if friendTag == 1 {
+            friend_list_title.text = "My Friends"
+            friendRequestList = GameDataManager.shared.rosterconnection_current_friendslist_retrieve()
+        }
+        else {
+            friend_list_title.text = "Friend request"
+            friendRequestList = GameDataManager.shared.inboxnotification_current_friendrequestlist_pending()
+        }
+        
+        completely_empty_imageView.isHidden = !friendRequestList.isEmpty
+        
     }
     
     @IBAction func handleUserCenterNavReturnClick(_ sender: Any) {
@@ -39,10 +51,17 @@ extension ReauestFriendsListViewController: UITableViewDelegate, UITableViewData
         if let avatarName = request["avatar"] {
             cell.friends_user_avatar_imageView.image = UIImage(named: avatarName)
         }
+        cell.friends_user_message_button.isHidden = true
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if friendTag == 1 {
+            let friend = friendRequestList[indexPath.row]
+            let chatVC = FriendsChatViewController()
+            chatVC.chatUserData = friend
+            chatVC.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(chatVC, animated: true)
+        }
     }
 }

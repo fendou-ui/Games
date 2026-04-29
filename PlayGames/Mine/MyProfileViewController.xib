@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -10,6 +11,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyProfileViewController" customModule="PlayGames" customModuleProvider="target">
             <connections>
+                <outlet property="big_ScrollView" destination="UbP-gb-XSW" id="mHJ-Gw-tt2"/>
+                <outlet property="big_my_avatar_imageView" destination="HUe-i2-z9O" id="K92-6P-fgB"/>
+                <outlet property="big_my_followed_count_label" destination="1Hm-QC-7Ed" id="yzw-Gm-NMC"/>
+                <outlet property="big_my_name_label" destination="jtM-y9-yOs" id="ajs-Nx-RXh"/>
+                <outlet property="collectionView" destination="nNz-TC-yjV" id="Bl2-HN-qUF"/>
+                <outlet property="my_avatar_imageView" destination="9Xh-Ma-h6E" id="7fX-gb-qnG"/>
+                <outlet property="my_coins_balance_label" destination="fWQ-d6-cHb" id="zvY-U2-GyL"/>
+                <outlet property="tableView" destination="zag-QX-T0H" id="zBE-tg-uu8"/>
+                <outlet property="user_center_posts_tap" destination="lLI-Jf-NR8" id="xlb-sW-yHg"/>
+                <outlet property="user_center_videos_tap" destination="RhW-Ee-nfK" id="xUu-6J-Lun"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,7 +35,7 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UbP-gb-XSW">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="818"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HUe-i2-z9O">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dfjbejhefdsf" translatesAutoresizingMaskIntoConstraints="NO" id="HUe-i2-z9O">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="495"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="495" id="VHL-lg-wiT"/>
@@ -39,7 +50,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26a-pY-GXz">
                             <rect key="frame" x="0.0" y="420" width="393" height="190"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Xh-Ma-h6E">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dfjbejhefdsf" translatesAutoresizingMaskIntoConstraints="NO" id="9Xh-Ma-h6E">
                                     <rect key="frame" x="21" y="56" width="57" height="57"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="57" id="M8u-ve-s1h"/>
@@ -81,7 +92,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecd-yJ-1Ge">
                                     <rect key="frame" x="21" y="137" width="351" height="48"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallte" translatesAutoresizingMaskIntoConstraints="NO" id="dlT-dU-33v">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallte" translatesAutoresizingMaskIntoConstraints="NO" id="dlT-dU-33v">
                                             <rect key="frame" x="0.0" y="0.0" width="351" height="48"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="125 balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWQ-d6-cHb">
@@ -179,10 +190,10 @@
                             </connections>
                         </button>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="nNz-TC-yjV">
-                            <rect key="frame" x="0.0" y="663" width="393" height="400"/>
+                            <rect key="frame" x="0.0" y="663" width="393" height="200"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="400" id="VYh-xr-5aW"/>
+                                <constraint firstAttribute="height" constant="200" id="VYh-xr-5aW"/>
                             </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gxu-Ja-pJq">
                                 <size key="itemSize" width="128" height="128"/>
@@ -192,7 +203,7 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zag-QX-T0H">
-                            <rect key="frame" x="0.0" y="663" width="393" height="420"/>
+                            <rect key="frame" x="0.0" y="663" width="393" height="400"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>
@@ -205,7 +216,7 @@
                         <constraint firstAttribute="trailing" secondItem="26a-pY-GXz" secondAttribute="trailing" id="OTb-Ah-Ien"/>
                         <constraint firstItem="lLI-Jf-NR8" firstAttribute="leading" secondItem="RhW-Ee-nfK" secondAttribute="trailing" constant="20" id="Qca-an-rnG"/>
                         <constraint firstAttribute="trailing" secondItem="nNz-TC-yjV" secondAttribute="trailing" id="WZu-5U-8yn"/>
-                        <constraint firstAttribute="bottom" secondItem="nNz-TC-yjV" secondAttribute="bottom" constant="20" id="Wbn-ee-bvY"/>
+                        <constraint firstAttribute="bottom" secondItem="nNz-TC-yjV" secondAttribute="bottom" constant="200" id="Wbn-ee-bvY"/>
                         <constraint firstAttribute="bottom" secondItem="zag-QX-T0H" secondAttribute="bottom" id="Zh4-uI-5gx"/>
                         <constraint firstItem="HUe-i2-z9O" firstAttribute="centerX" secondItem="UbP-gb-XSW" secondAttribute="centerX" id="bar-JL-2ZJ"/>
                         <constraint firstItem="RhW-Ee-nfK" firstAttribute="leading" secondItem="UbP-gb-XSW" secondAttribute="leading" constant="13" id="ceo-3h-TmA"/>
@@ -273,6 +284,7 @@
     </objects>
     <resources>
         <image name="Profile" width="129.33332824707031" height="22.666666030883789"/>
+        <image name="dfjbejhefdsf" width="1280" height="1280"/>
         <image name="edit" width="89" height="30"/>
         <image name="post_video_bg" width="390" height="844"/>
         <image name="setting" width="24" height="24"/>

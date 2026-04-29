@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserGameCnterVC" customModule="PlayGames" customModuleProvider="target">
             <connections>
+                <outlet property="big_scrollView" destination="BPR-f2-NSn" id="WAF-Pz-6bP"/>
                 <outlet property="big_user_avatar_imageView" destination="B8A-8h-TnL" id="loW-Be-0qZ"/>
                 <outlet property="collectionView" destination="iHs-PS-njf" id="9U3-lv-nwc"/>
                 <outlet property="tableView" destination="asZ-76-3TG" id="hCY-gn-08U"/>
@@ -65,8 +66,8 @@
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5N-28-sOL">
-                                    <rect key="frame" x="90" y="85" width="35.333333333333343" height="20"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32 Fans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G5N-28-sOL">
+                                    <rect key="frame" x="90" y="85" width="51" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="MUh-C7-cgk"/>
                                     </constraints>
@@ -74,13 +75,13 @@
                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgj-2I-WLu">
-                                    <rect key="frame" x="155.33333333333334" y="86.666666666666686" width="35.333333333333343" height="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28 Follows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vgj-2I-WLu">
+                                    <rect key="frame" x="171" y="86.666666666666686" width="69.333333333333314" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFW-gx-EPu">
+                                <button opaque="NO" tag="511" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFW-gx-EPu">
                                     <rect key="frame" x="283" y="38" width="89" height="30"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" image="tap_discover_follow"/>
@@ -88,7 +89,7 @@
                                         <action selector="requestUserFollowOrUnfollowTargetCommunityCreator:" destination="-1" eventType="touchUpInside" id="h5x-0D-459"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5YS-nz-C41">
+                                <button opaque="NO" tag="512" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5YS-nz-C41">
                                     <rect key="frame" x="21" y="127" width="169.66666666666666" height="44"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" image="user_center_text_call"/>
@@ -96,7 +97,7 @@
                                         <action selector="requestUserFollowOrUnfollowTargetCommunityCreator:" destination="-1" eventType="touchUpInside" id="2M1-2N-cdI"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGa-ZK-AVg">
+                                <button opaque="NO" tag="513" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uGa-ZK-AVg">
                                     <rect key="frame" x="202.66666666666663" y="127" width="169.33333333333337" height="44"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" image="user_center_video_call"/>
@@ -143,10 +144,10 @@
                             </connections>
                         </button>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="iHs-PS-njf">
-                            <rect key="frame" x="0.0" y="663" width="393" height="400"/>
+                            <rect key="frame" x="0.0" y="663" width="393" height="200"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="400" id="obk-ho-rWB"/>
+                                <constraint firstAttribute="height" constant="200" id="c3e-AH-EZp"/>
                             </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9Ac-z3-8EG">
                                 <size key="itemSize" width="128" height="128"/>
@@ -156,7 +157,7 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="asZ-76-3TG">
-                            <rect key="frame" x="0.0" y="663" width="393" height="420"/>
+                            <rect key="frame" x="0.0" y="663" width="393" height="400"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>
@@ -175,7 +176,7 @@
                         <constraint firstItem="asZ-76-3TG" firstAttribute="top" secondItem="s8f-tE-1fX" secondAttribute="bottom" constant="12" id="VGC-bB-4us"/>
                         <constraint firstItem="mS4-SY-qtS" firstAttribute="leading" secondItem="BPR-f2-NSn" secondAttribute="leading" id="ZQF-cu-iRa"/>
                         <constraint firstItem="B8A-8h-TnL" firstAttribute="centerX" secondItem="BPR-f2-NSn" secondAttribute="centerX" id="d0S-GB-uPZ"/>
-                        <constraint firstAttribute="bottom" secondItem="iHs-PS-njf" secondAttribute="bottom" constant="20" id="e3C-Ea-1Hi"/>
+                        <constraint firstAttribute="bottom" secondItem="iHs-PS-njf" secondAttribute="bottom" constant="200" id="e3C-Ea-1Hi"/>
                         <constraint firstItem="iHs-PS-njf" firstAttribute="top" secondItem="s8f-tE-1fX" secondAttribute="bottom" constant="12" id="jIB-PE-2hY"/>
                         <constraint firstItem="s8f-tE-1fX" firstAttribute="top" secondItem="mS4-SY-qtS" secondAttribute="bottom" constant="10" id="q6l-a8-Kzc"/>
                         <constraint firstAttribute="trailing" secondItem="mS4-SY-qtS" secondAttribute="trailing" id="r8j-cm-oFC"/>

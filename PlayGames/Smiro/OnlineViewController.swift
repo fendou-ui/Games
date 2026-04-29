@@ -13,6 +13,8 @@ class OnlineViewController: UIViewController {
     @IBOutlet weak var please_yellow_button: UIButton!
     @IBOutlet weak var user_love_button: UIButton!
     @IBOutlet weak var channel_replay_online_view: UIView! // 直播视频的view
+    @IBOutlet weak var online_comment_textField: UITextField!
+    @IBOutlet weak var oline_player_follow_button: UIButton!
     
     var online_gifts_view = OnlineGiftsView()
     var report_black_view = PlayReportBlackView()
@@ -21,6 +23,11 @@ class OnlineViewController: UIViewController {
     var chatroomRoomData: [String: Any] = [:]
     private var broadcastPlayerInstance: AVPlayer?
     private var broadcastPlayerLayer: AVPlayerLayer?
+    var commentList: [[String: String]] = []
+    
+    private var chatroomCommentKey: String {
+        return replayStreamVideoFilename ?? "unknown_room"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +39,11 @@ class OnlineViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "OnlineTableViewCell", bundle: nil), forCellReuseIdentifier: "online")
+        loadComments()
         
         view.addSubview(please_note_view)
         please_note_view.frame =  CGRect(x: 0, y: 1200, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -46,6 +55,9 @@ class OnlineViewController: UIViewController {
     func bindChatroomDisplayInfo() {
         if let name = chatroomRoomData["broadcastcaster_host_nickname_commentary"] as? String {
             user_name_label.text = name
+            if GameDataManager.shared.handshakeresponse_isfriendrequest_sent_already(name) {
+                oline_player_follow_button.alpha = 0.55
+            }
         }
         if let avatar = chatroomRoomData["voiceovermicrophone_host_avatarimage_headset"] as? String {
             user_avatar_image.image = UIImage(named: avatar)
@@ -82,6 +94,11 @@ class OnlineViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    func loadComments() {
+        commentList = GameDataManager.shared.threadhistory_videocomments_retrieve(chatroomCommentKey)
+        tableView.reloadData()
+    }
+    
     func setupUIReportBlackView() {
         report_black_view = UINib(nibName: "PlayReportBlackView", bundle: nil).instantiate(withOwner: self, options: nil).first as! PlayReportBlackView
         report_black_view.delegate = self
@@ -94,17 +111,39 @@ class OnlineViewController: UIViewController {
         view.addSubview(online_gifts_view)
         online_gifts_view.frame = CGRect(x: 0, y: 1200, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
     }
-
+    
+    
+    @IBAction func onlineEnterUserConfigClick(_ sender: Any) {
+//        let userCenterVC = UserGameCnterVC()
+//        userCenterVC.userData = [
+//            "nickname": chatroomRoomData["broadcastcaster_host_nickname_commentary"] as? String ?? "",
+//            "avatar": chatroomRoomData["voiceovermicrophone_host_avatarimage_headset"] as? String ?? ""
+//        ]
+//        let nav = UINavigationController(rootViewController: userCenterVC)
+//        nav.modalPresentationStyle = .fullScreen
+//        present(nav, animated: true)
+    }
+    
     @IBAction func online_dissmissClick(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func online_userAddFriendClick(_ sender: UIButton) {
-        
+        let nickname = chatroomRoomData["broadcastcaster_host_nickname_commentary"] ?? ""
+        let avatar = chatroomRoomData["voiceovermicrophone_host_avatarimage_headset"] ?? ""
+        if GameDataManager.shared.handshakeresponse_isfriendrequest_sent_already(nickname as! String) {
+            GameLoadingHUD.gameLoadingText("Friend request already sent", in: self.view)
+        } else {
+            GameDataManager.shared.socialoutreach_sendfriendrequest_connection(nickname as! String, avatar: avatar as! String, message: "Friend request sent, waiting for response")
+            GameLoadingHUD.gameLoadingSuccess("Friend request sent, waiting for response", in: self.view)
+            oline_player_follow_button.alpha = 0.55
+        }
+        return
     }
     
-    @IBAction func online_tapLoveUserChatRoomClick(_ sender: Any) {
-        
+    /// 喜欢
+    @IBAction func online_tapLoveUserChatRoomClick(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
     }
     
     @IBAction func online_giveLoveUserChatRoomGiftsClick(_ sender: Any) {
@@ -114,8 +153,19 @@ class OnlineViewController: UIViewController {
     }
     
     @IBAction func online_tapMoreButtonAndSendChatClick(_ sender: UIButton) {
-        if sender.tag == 311 { // 发送消息
-            
+        if sender.tag == 311 { // 发送评论
+            let text = online_comment_textField.text ?? ""
+            guard !text.isEmpty else {
+                GameLoadingHUD.gameLoadingText("Please enter a comment", in: self.view)
+                return
+            }
+            GameDataManager.shared.threadreply_postcomment_tovideo(chatroomCommentKey, text: text)
+            online_comment_textField.text = ""
+            online_comment_textField.resignFirstResponder()
+            loadComments()
+            if commentList.count > 0 {
+                tableView.scrollToRow(at: IndexPath(row: commentList.count - 1, section: 0), at: .bottom, animated: true)
+            }
         }
         else {
             UIView.animate(withDuration: 0.31) {
@@ -135,7 +185,7 @@ class OnlineViewController: UIViewController {
 
 extension OnlineViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return commentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -143,7 +193,23 @@ extension OnlineViewController: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
         
+        let comment = commentList[indexPath.row]
+        cell.comment_user_name_label.text = (comment["nickname"] ?? "") + " :"
+        cell.comment_content_label.text = comment["text"]
+        
+        let isMine = comment["sender"] == "me"
+        cell.delete_comment_button.isHidden = !isMine
+        cell.delete_comment_button.tag = indexPath.row
+        cell.delete_comment_button.removeTarget(self, action: #selector(deleteCommentAction(_:)), for: .touchUpInside)
+        cell.delete_comment_button.addTarget(self, action: #selector(deleteCommentAction(_:)), for: .touchUpInside)
+        
         return cell
+    }
+    
+    @objc func deleteCommentAction(_ sender: UIButton) {
+        let index = sender.tag
+        GameDataManager.shared.threadremove_deletecomment_fromvideo(chatroomCommentKey, at: index)
+        loadComments()
     }
 }
 
@@ -153,8 +219,15 @@ extension OnlineViewController: PlayReportBlackViewDelegate {
             GameLoadingHUD.gameLoadingSuccess("Report submitted, will be reviewed within 24 hours", in: self.view)
         }
         else {
-            GameDataManager.shared.throttlingburst_appenduser_toblacklist_spikesimulation(chatroomRoomData["broadcastcaster_host_nickname_commentary"] as! String, avatar: chatroomRoomData["voiceovermicrophone_host_avatarimage_headset"] as! String)
-            dismiss(animated: true, completion: nil)
+            GameLoadingHUD.overlayconfirm_alertpopup_interactionbounce(
+                title: "Block User",
+                message: "Are you sure you want to block this user? You will no longer see their content.",
+                confirmTitle: "Block",
+                in: self.view
+            ) {
+                GameDataManager.shared.throttlingburst_appenduser_toblacklist_spikesimulation(self.chatroomRoomData["broadcastcaster_host_nickname_commentary"] as! String, avatar: self.chatroomRoomData["voiceovermicrophone_host_avatarimage_headset"] as! String)
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
 }

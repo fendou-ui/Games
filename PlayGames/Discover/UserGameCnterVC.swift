@@ -5,6 +5,7 @@ class UserGameCnterVC: UIViewController {
 
     @IBOutlet weak var user_center_avatar_imageView: UIImageView!
     @IBOutlet weak var big_user_avatar_imageView: UIImageView!
+    @IBOutlet weak var big_scrollView: UIScrollView!
     @IBOutlet weak var user_center_name_label: UILabel!
     @IBOutlet weak var user_center_fans_label: UILabel!
     @IBOutlet weak var user_center_follow_label: UILabel!
@@ -15,6 +16,8 @@ class UserGameCnterVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var report_black_view = PlayReportBlackView()
     var userData: [String: String] = [:]
+    var userVideoList: [[String: String]] = []
+    var userPostList: [[String: String]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +27,24 @@ class UserGameCnterVC: UIViewController {
         user_center_avatar_imageView.layer.cornerRadius = 28.5
         user_center_avatar_imageView.layer.borderWidth = 2
         user_center_avatar_imageView.layer.borderColor = UIColor.white.cgColor
-        
+        big_scrollView.contentInsetAdjustmentBehavior = .never
         if let avatarName = userData["avatar"] {
             user_center_avatar_imageView.image = UIImage(named: avatarName)
-            big_user_avatar_imageView.image = UIImage(named: avatarName)
+            big_user_avatar_imageView?.image = UIImage(named: avatarName)
         }
         user_center_name_label.text = userData["nickname"]
+        
+        let nickname = userData["nickname"] ?? ""
+        userVideoList = GameDataManager.shared.clipsegmentShortvideoFeedlistPlaybackloop().filter {
+            $0["uploadercreator_video_publishernickname_channel"] == nickname
+        }
+        userPostList = GameDataManager.shared.streamoverlayDiscoverPostlistEngagement().filter {
+            $0["replayranking_publisher_displayname_leaderboard"] == nickname
+        }
+        
+        if GameDataManager.shared.optimizedsecure_isfollowing_user_reliable(nickname) {
+            user_center_follow_tap.setImage(UIImage(named: "tap_discover_followed_yellow"), for: .normal)
+        }
     }
     
     func setupUIReportBlackView() {
@@ -74,7 +89,28 @@ class UserGameCnterVC: UIViewController {
     }
     
     @IBAction func requestUserFollowOrUnfollowTargetCommunityCreator(_ sender: UIButton) {
-        
+        if sender.tag == 511 {
+            let nickname = userData["nickname"] ?? ""
+            if GameDataManager.shared.optimizedsecure_isfollowing_user_reliable(nickname) {
+                GameDataManager.shared.efficientrobust_unfollow_targetuser_scalableflexible(nickname)
+                user_center_follow_tap.setImage(UIImage(named: "tap_discover_follow"), for: .normal)
+            } else {
+                GameDataManager.shared.immersiveintuitive_follow_targetuser_seamless(nickname)
+                user_center_follow_tap.setImage(UIImage(named: "tap_discover_followed_yellow"), for: .normal)
+            }
+        }
+        else if sender.tag == 512 {
+            let messageVC = FriendsChatViewController()
+            messageVC.chatUserData = userData
+            self.navigationController?.pushViewController(messageVC, animated: true)
+        }
+        else {
+            let chatVideoVC = ChatVideoViewController()
+            chatVideoVC.chatTargetNickname = userData["nickname"] ?? ""
+            chatVideoVC.modalPresentationStyle = .fullScreen
+            self.present(chatVideoVC, animated: true, completion: nil)
+        }
+       
     }
     
     @IBAction func requestUserVideosAndPostsCommunityClick(_ sender: UIButton) {
@@ -92,34 +128,69 @@ class UserGameCnterVC: UIViewController {
         }
     }
 
-    
+    func customPopToTargetViewController() {
+        if let nav = self.navigationController {
+            for vc in nav.viewControllers {
+                if vc is GameDiscoverViewController {
+                    nav.popToViewController(vc, animated: true)
+                    break
+                }
+                if vc is SmiroViewController {
+                    nav.popToViewController(vc, animated: true)
+                    break
+                }
+                if vc is CenterMessageViewController {
+                    nav.popToViewController(vc, animated: true)
+                    break
+                }
+            }
+        }
+    }
 }
 
 extension UserGameCnterVC: PlayReportBlackViewDelegate {
     func playReportBlackViewDelegateSuccess(rateLimitTag: Int) {
         if rateLimitTag == 311 {
-            
+            GameLoadingHUD.gameLoadingSuccess("Report submitted, will be reviewed within 24 hours", in: self.view)
         }
         else {
-            
+            GameLoadingHUD.overlayconfirm_alertpopup_interactionbounce(
+                title: "Block User",
+                message: "Are you sure you want to block this user? You will no longer see their content.",
+                confirmTitle: "Block",
+                in: self.view
+            ) {
+                GameDataManager.shared.throttlingburst_appenduser_toblacklist_spikesimulation(self.userData["nickname"] ?? "", avatar: self.userData["avatar", default: ""])
+                self.customPopToTargetViewController()
+            }
         }
     }
 }
 
 extension UserGameCnterVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return userVideoList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "video", for: indexPath) as! VideoCollectionViewCell
         cell.backgroundColor = .clear
+        let video = userVideoList[indexPath.item]
+        cell.video_desc_label.text = video["captionsubtitle_video_description_overlay"]
+        cell.like_video_count_label.text = video["engagementinteraction_video_likecount_reaction"]
+        cell.comment_video_count_label.text = video["threadreply_video_commentcount_discussion"]
+        if let coverName = video["thumbnailpreview_video_coverimage_snapshot"] {
+            cell.video_covert_imageView.image = UIImage(named: coverName)
+        }
         
+        cell.report_video_button.addTarget(self, action: #selector(submitUserReportForInappropriateGameCommunityContent(_ :)), for: .touchUpInside)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let video = userVideoList[indexPath.item]
         let openPlayerVC = OpenPlayerVideoVC()
+        openPlayerVC.shortVideoData = video
         openPlayerVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(openPlayerVC, animated: true)
     }
@@ -127,13 +198,27 @@ extension UserGameCnterVC: UICollectionViewDataSource, UICollectionViewDelegate 
 
 extension UserGameCnterVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return userPostList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "discover", for: indexPath) as! GameDiscoverTableViewCell
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
+        
+        let post = userPostList[indexPath.row]
+        cell.cell_discover_name_label.text = post["replayranking_publisher_displayname_leaderboard"]
+        cell.cell_discover_time_label.text = post["arena_post_publishtime_matchmakinglobbyspectator"]
+        cell.cell_discover_content_label.text = post["multiplayer_post_textcontent_cooperative"]
+        cell.cell_discover_like_label.text = post["strategytacticsscoreboard_total_likecount_progression"]
+        cell.cell_discover_comment_label.text = post["leveling_total_commentcount_upgradeinventoryequipment"]
+        if let avatarName = post["achievementmissionquest_publisher_avatarimage_battle"] {
+            cell.cell_discover_user_avatar.image = UIImage(named: avatarName)
+        }
+        if let coverName = post["avatar_post_coverimage_characterprofilenickname"] {
+            cell.cell_discover_imageView.image = UIImage(named: coverName)
+        }
+        
         cell.cell_discover_report_button.tag = indexPath.item
         cell.cell_discover_report_button.addTarget(self, action: #selector(submitUserReportForInappropriateGameCommunityContent(_ :)), for: .touchUpInside)
         
@@ -141,7 +226,9 @@ extension UserGameCnterVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = userPostList[indexPath.row]
         let discoverDetailsVC = GameDiscoverDetailsVC()
+        discoverDetailsVC.postData = post
         discoverDetailsVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(discoverDetailsVC, animated: true)
     }
@@ -155,36 +242,3 @@ extension UserGameCnterVC: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
-
-/**
- 
- Dear App Review Team,
- 
- Thank you so much for taking the time to review our app and for the detailed feedback — we truly appreciate it, especially as first-time developers on the platform.
- 
- We've carefully reviewed the issues raised and would like to outline how we plan to address each one:
- 
- Regarding Guideline 1.2 - User-Generated Content:
- 
- We want to assure you that our app already has the following safety mechanisms in place:
- 
- 1、EULA / Terms of Use – Users are required to agree to our User Agreement and Privacy Policy before signing in. We will further enhance this by presenting a clear EULA prompt upon first login that explicitly states our zero-tolerance policy for objectionable content and abusive behavior.
- 
- 2、Content Filtering – Our app includes built-in content moderation to filter inappropriate material.
- 
- 3、Flagging Mechanism – Users can report objectionable content or abusive users via the "Report User" feature, which is accessible from user profiles and content pages.
- 
- 4、Blocking Mechanism – Users can block abusive users through the "Block User" option. Blocked users are immediately hidden from all content feeds, messages, and user lists.
- 
- 5、24-Hour Response Commitment – We are committed to acting on all objectionable content reports within 24 hours, including removing the content and ejecting the offending user.
- 
- Regarding Guideline 2.1(a) - Information Needed:
- 
-We apologize for the inconvenience. To ensure you can fully verify all features, we have pre-populated the app with chat content. Upon logging in, you will find an existing conversation with a user in the Messages tab, which you can tap into to experience the full chat functionality — including sending messages and video chat.
- 
- We will also include a screen recording demonstrating the EULA agreement flow, the report mechanism, and the block mechanism as requested.
- 
- Warm regards,
- Elstyl Team
- 
- */

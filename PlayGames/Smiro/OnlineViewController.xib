@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -11,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnlineViewController" customModule="PlayGames" customModuleProvider="target">
             <connections>
                 <outlet property="channel_replay_online_view" destination="U8S-oH-Dao" id="Chc-Si-LT2"/>
+                <outlet property="oline_player_follow_button" destination="RTe-wX-YX9" id="ZiS-p0-jek"/>
+                <outlet property="online_comment_textField" destination="Cjr-b4-L00" id="Msc-BE-Pq3"/>
                 <outlet property="please_desc_label" destination="6GW-Ct-KnC" id="sGB-q1-cD3"/>
                 <outlet property="please_note_view" destination="Eie-ck-O87" id="Ycl-Vr-sK2"/>
                 <outlet property="please_yellow_button" destination="a70-yp-zZX" id="J60-zg-46a"/>
@@ -72,17 +75,30 @@
                                         <action selector="online_userAddFriendClick:" destination="-1" eventType="touchUpInside" id="MSt-wW-Tnd"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QgN-x0-T66">
+                                    <rect key="frame" x="0.0" y="0.0" width="75" height="36"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="75" id="FRw-sp-gMO"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <connections>
+                                        <action selector="onlineEnterUserConfigClick:" destination="-1" eventType="touchUpInside" id="QW8-3l-uum"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="RTe-wX-YX9" firstAttribute="leading" secondItem="grT-Ds-Oxd" secondAttribute="trailing" constant="6" id="2Dw-N9-L59"/>
                                 <constraint firstAttribute="trailing" secondItem="RTe-wX-YX9" secondAttribute="trailing" id="6c8-qr-4mk"/>
                                 <constraint firstItem="Wmt-Vx-aHv" firstAttribute="centerY" secondItem="oAu-pa-ue8" secondAttribute="centerY" id="ENI-mB-NgE"/>
+                                <constraint firstItem="QgN-x0-T66" firstAttribute="leading" secondItem="oAu-pa-ue8" secondAttribute="leading" id="G2O-DM-XDy"/>
                                 <constraint firstItem="grT-Ds-Oxd" firstAttribute="leading" secondItem="Wmt-Vx-aHv" secondAttribute="trailing" constant="9" id="LXu-IW-lvq"/>
+                                <constraint firstItem="QgN-x0-T66" firstAttribute="top" secondItem="oAu-pa-ue8" secondAttribute="top" id="PNN-kF-VRS"/>
                                 <constraint firstItem="Wmt-Vx-aHv" firstAttribute="leading" secondItem="oAu-pa-ue8" secondAttribute="leading" constant="6" id="Wwc-MX-87i"/>
                                 <constraint firstItem="grT-Ds-Oxd" firstAttribute="centerY" secondItem="oAu-pa-ue8" secondAttribute="centerY" id="XtK-SW-UQa"/>
                                 <constraint firstItem="RTe-wX-YX9" firstAttribute="top" secondItem="oAu-pa-ue8" secondAttribute="top" id="cuU-DM-YWZ"/>
                                 <constraint firstAttribute="bottom" secondItem="RTe-wX-YX9" secondAttribute="bottom" id="eDI-g6-PCa"/>
+                                <constraint firstAttribute="bottom" secondItem="QgN-x0-T66" secondAttribute="bottom" id="giu-VW-BfF"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -177,6 +193,7 @@
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" backgroundImage="online_unlove"/>
+                            <state key="selected" backgroundImage="online_love"/>
                             <connections>
                                 <action selector="online_tapLoveUserChatRoomClick:" destination="-1" eventType="touchUpInside" id="lFm-9c-Ypa"/>
                             </connections>
@@ -364,6 +381,7 @@
         <image name="online_close" width="16" height="16"/>
         <image name="online_follow" width="18" height="18"/>
         <image name="online_gift" width="36" height="36"/>
+        <image name="online_love" width="36" height="36"/>
         <image name="online_point" width="36" height="36"/>
         <image name="online_unlove" width="36" height="36"/>
         <image name="pay_immediately" width="262" height="49"/>

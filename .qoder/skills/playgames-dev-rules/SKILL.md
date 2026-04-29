@@ -348,3 +348,5 @@ consistent
 比如用户名：reliable_readable_name_interactive
 就如这个例子，
 方法名规则是，表达实际含义的那个单词才用_来区分一下，其余的单词不要下划线
+
+拉黑后，记得返回一级页面，意思就是拉黑后，返回到从tabbar上面进入的那个页面

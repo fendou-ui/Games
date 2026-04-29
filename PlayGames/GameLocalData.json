@@ -4,7 +4,7 @@
             "replayranking_publisher_displayname_leaderboard": "GamerKing",
             "achievementmissionquest_publisher_avatarimage_battle": "blazerunner_portrait",
             "arena_post_publishtime_matchmakinglobbyspectator": "2 hours ago",
-            "multiplayer_post_textcontent_cooperative": "刚刚刷新了最高分！这个游戏太棒了 🎮",
+            "multiplayer_post_textcontent_cooperative": "Just hit a new high score! This game is amazing 🎮",
             "strategytacticsscoreboard_total_likecount_progression": "128",
             "leveling_total_commentcount_upgradeinventoryequipment": "32",
             "avatar_post_coverimage_characterprofilenickname": "highscore_moment_cover"
@@ -13,7 +13,7 @@
             "replayranking_publisher_displayname_leaderboard": "PlayMaster",
             "achievementmissionquest_publisher_avatarimage_battle": "vortexknight_portrait",
             "arena_post_publishtime_matchmakinglobbyspectator": "5 hours ago",
-            "multiplayer_post_textcontent_cooperative": "有人想组队打新副本吗？在找厉害的队友！",
+            "multiplayer_post_textcontent_cooperative": "Anyone want to team up for the new raid? Looking for skilled players!",
             "strategytacticsscoreboard_total_likecount_progression": "86",
             "leveling_total_commentcount_upgradeinventoryequipment": "21",
             "avatar_post_coverimage_characterprofilenickname": "raid_teamup_cover"
@@ -22,7 +22,7 @@
             "replayranking_publisher_displayname_leaderboard": "ShadowHunter",
             "achievementmissionquest_publisher_avatarimage_battle": "duskwarden_portrait",
             "arena_post_publishtime_matchmakinglobbyspectator": "8 hours ago",
-            "multiplayer_post_textcontent_cooperative": "快来看我最新的游戏录像！史诗级Boss战 🔥",
+            "multiplayer_post_textcontent_cooperative": "Check out my latest gameplay video! Epic boss fight 🔥",
             "strategytacticsscoreboard_total_likecount_progression": "256",
             "leveling_total_commentcount_upgradeinventoryequipment": "45",
             "avatar_post_coverimage_characterprofilenickname": "bossfight_epic_cover"
@@ -31,7 +31,7 @@
             "replayranking_publisher_displayname_leaderboard": "NightWolf",
             "achievementmissionquest_publisher_avatarimage_battle": "stormcaller_portrait",
             "arena_post_publishtime_matchmakinglobbyspectator": "1 day ago",
-            "multiplayer_post_textcontent_cooperative": "终于解锁了传说级皮肤！花了我3个月 😎",
+            "multiplayer_post_textcontent_cooperative": "Finally unlocked the legendary skin! Took me 3 months 😎",
             "strategytacticsscoreboard_total_likecount_progression": "342",
             "leveling_total_commentcount_upgradeinventoryequipment": "67",
             "avatar_post_coverimage_characterprofilenickname": "legendary_skin_cover"
@@ -40,10 +40,19 @@
             "replayranking_publisher_displayname_leaderboard": "StarPlayer",
             "achievementmissionquest_publisher_avatarimage_battle": "frostblade_portrait",
             "arena_post_publishtime_matchmakinglobbyspectator": "2 days ago",
-            "multiplayer_post_textcontent_cooperative": "新版本上线了！地图改动太疯狂了",
+            "multiplayer_post_textcontent_cooperative": "New update is live! The map changes are insane",
             "strategytacticsscoreboard_total_likecount_progression": "198",
             "leveling_total_commentcount_upgradeinventoryequipment": "53",
             "avatar_post_coverimage_characterprofilenickname": "mapupdate_live_cover"
+        },
+        {
+            "replayranking_publisher_displayname_leaderboard": "game123",
+            "achievementmissionquest_publisher_avatarimage_battle": "sdbfjewb_ejhrf",
+            "arena_post_publishtime_matchmakinglobbyspectator": "3 hours ago",
+            "multiplayer_post_textcontent_cooperative": "Excited to share my first victory royale! Never giving up pays off 🏆",
+            "strategytacticsscoreboard_total_likecount_progression": "76",
+            "leveling_total_commentcount_upgradeinventoryequipment": "18",
+            "avatar_post_coverimage_characterprofilenickname": "hjbewhj_dfbw_cbdf"
         }
     ],
     "identitysubscription_discover_commentslist_donationrewardcurrency": [
@@ -251,6 +260,15 @@
             "engagementinteraction_video_likecount_reaction": "265",
             "threadreply_video_commentcount_discussion": "38",
             "streamplayback_video_filename_buffering": "viper_rush_moments"
+        },
+        {
+            "uploadercreator_video_publishernickname_channel": "game123",
+            "profileiconbadge_video_publisheravatar_verification": "sdbfjewb_ejhrf",
+            "thumbnailpreview_video_coverimage_snapshot": "jsfbhj_wejkbndsf",
+            "captionsubtitle_video_description_overlay": "My first ranked win! The final circle was intense 🌟",
+            "engagementinteraction_video_likecount_reaction": "95",
+            "threadreply_video_commentcount_discussion": "22",
+            "streamplayback_video_filename_buffering": "sdjfndhs_jebdferta"
         }
     ]
 }

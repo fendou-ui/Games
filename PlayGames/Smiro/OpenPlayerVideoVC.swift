@@ -16,13 +16,14 @@ class OpenPlayerVideoVC: UIViewController {
     private var shortVideoPlayer: AVPlayer?
     private var shortVideoPlayerLayer: AVPlayerLayer?
     var report_black_view = PlayReportBlackView()
+    var commentList: [[String: String]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         open_player_avatar_imageView.layer.borderColor = UIColor.white.cgColor
         let nickname = shortVideoData["uploadercreator_video_publishernickname_channel"] ?? ""
         if GameDataManager.shared.handshakeresponse_isfriendrequest_sent_already(nickname) {
-            open_player_follow_button.isEnabled = false
+            open_player_follow_button.alpha = 0.55
         }
         
         tableView.delegate = self
@@ -37,11 +38,18 @@ class OpenPlayerVideoVC: UIViewController {
         
         setupShortVideoPlayer()
         setupUIReportBlackView()
+        loadComments()
         
         let videoFilename = shortVideoData["streamplayback_video_filename_buffering"] ?? ""
         if GameDataManager.shared.interactionpulse_isvideo_liked_signal(videoFilename) {
             open_player_like_button.setBackgroundImage(UIImage(named: "open_play_mp4_like_yellow"), for: .normal)
         }
+    }
+    
+    func loadComments() {
+        let videoFilename = shortVideoData["streamplayback_video_filename_buffering"] ?? ""
+        commentList = GameDataManager.shared.threadhistory_videocomments_retrieve(videoFilename)
+        tableView.reloadData()
     }
     
     func setupUIReportBlackView() {
@@ -109,6 +117,7 @@ class OpenPlayerVideoVC: UIViewController {
             } else {
                 GameDataManager.shared.socialoutreach_sendfriendrequest_connection(nickname, avatar: avatar, message: "Friend request sent, waiting for response")
                 GameLoadingHUD.gameLoadingSuccess("Friend request sent, waiting for response", in: self.view)
+                open_player_follow_button.alpha = 0.55
             }
             return
         }
@@ -126,7 +135,20 @@ class OpenPlayerVideoVC: UIViewController {
     
     //发送、声音、点赞
     @IBAction func processUserLikeActionForGameCommunityPostItem(_ sender: UIButton) {
-        if sender.tag == 311 {
+        if sender.tag == 311 { // 发布评论
+            let text = open_player_textFiled.text ?? ""
+            guard !text.isEmpty else {
+                GameLoadingHUD.gameLoadingText("Please enter a comment", in: self.view)
+                return
+            }
+            let videoFilename = shortVideoData["streamplayback_video_filename_buffering"] ?? ""
+            GameDataManager.shared.threadreply_postcomment_tovideo(videoFilename, text: text)
+            open_player_textFiled.text = ""
+            open_player_textFiled.resignFirstResponder()
+            loadComments()
+            if commentList.count > 0 {
+                tableView.scrollToRow(at: IndexPath(row: commentList.count - 1, section: 0), at: .bottom, animated: true)
+            }
             return
         }
         if sender.tag == 312 { // 关闭或开启声音
@@ -152,7 +174,7 @@ class OpenPlayerVideoVC: UIViewController {
 
 extension OpenPlayerVideoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return commentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -160,7 +182,24 @@ extension OpenPlayerVideoVC: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
         
+        let comment = commentList[indexPath.row]
+        cell.comment_user_name_label.text = (comment["nickname"] ?? "") + " :"
+        cell.comment_content_label.text = comment["text"]
+        
+        let isMine = comment["sender"] == "me"
+        cell.delete_comment_button.isHidden = !isMine
+        cell.delete_comment_button.tag = indexPath.row
+        cell.delete_comment_button.removeTarget(self, action: #selector(deleteCommentAction(_:)), for: .touchUpInside)
+        cell.delete_comment_button.addTarget(self, action: #selector(deleteCommentAction(_:)), for: .touchUpInside)
+        
         return cell
+    }
+    
+    @objc func deleteCommentAction(_ sender: UIButton) {
+        let index = sender.tag
+        let videoFilename = shortVideoData["streamplayback_video_filename_buffering"] ?? ""
+        GameDataManager.shared.threadremove_deletecomment_fromvideo(videoFilename, at: index)
+        loadComments()
     }
 }
 
@@ -171,8 +210,15 @@ extension OpenPlayerVideoVC: PlayReportBlackViewDelegate {
             GameLoadingHUD.gameLoadingSuccess("Report submitted, will be reviewed within 24 hours", in: self.view)
         }
         else { // 拉黑
-            GameDataManager.shared.throttlingburst_appenduser_toblacklist_spikesimulation(shortVideoData["uploadercreator_video_publishernickname_channel"] ?? "", avatar: shortVideoData["voiceovermicrophone_host_avatarimage_headset"] ?? "")
-            navigationController?.popViewController(animated: true)
+            GameLoadingHUD.overlayconfirm_alertpopup_interactionbounce(
+                title: "Block User",
+                message: "Are you sure you want to block this user? You will no longer see their content.",
+                confirmTitle: "Block",
+                in: self.view
+            ) {
+                GameDataManager.shared.throttlingburst_appenduser_toblacklist_spikesimulation(self.shortVideoData["uploadercreator_video_publishernickname_channel"] ?? "", avatar: self.shortVideoData["voiceovermicrophone_host_avatarimage_headset"] ?? "")
+                self.navigationController?.popViewController(animated: true)
+            }
         }
     }
 }

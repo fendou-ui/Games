@@ -74,6 +74,21 @@ class GameDataManager {
         return jsonData["cachingbuffer_current_userprofile_pipelineworkflow"] as? [String: String] ?? [:]
     }
     
+    // MARK: - 个人资料（按账号隔离）
+    
+    func dashboardsnapshot_save_userprofile(_ profile: [String: String]) {
+        let key = "AccountUserProfileStorage_\(currentAccountIdentifier)"
+        UserDefaults.standard.set(profile, forKey: key)
+    }
+    
+    func dashboardsnapshot_load_userprofile() -> [String: String] {
+        let key = "AccountUserProfileStorage_\(currentAccountIdentifier)"
+        if let profile = UserDefaults.standard.dictionary(forKey: key) as? [String: String] {
+            return profile
+        }
+        return cachingbufferCurrentUserprofilePipelineworkflow()
+    }
+    
     func clipsegmentShortvideoFeedlistPlaybackloop() -> [[String: String]] {
         return jsonData["clipsegment_shortvideo_feedlist_playbackloop"] as? [[String: String]] ?? []
     }
@@ -193,5 +208,100 @@ class GameDataManager {
     
     func handshakeresponse_isfriendrequest_sent_already(_ nickname: String) -> Bool {
         return inboxnotification_current_friendrequestlist_pending().contains { $0["nickname"] == nickname }
+    }
+    
+    // MARK: - 点赞动态（按账号隔离）
+    
+    private let likedPostStorageKey = "AccountLikedPostStorage"
+    
+    func communityheartbeat_likepost_tolist_engagement(_ postData: [String: String]) {
+        var all = UserDefaults.standard.dictionary(forKey: likedPostStorageKey) as? [String: [[String: String]]] ?? [:]
+        var list = all[currentAccountIdentifier] ?? []
+        let publisher = postData["replayranking_publisher_displayname_leaderboard"] ?? ""
+        let content = postData["multiplayer_post_textcontent_cooperative"] ?? ""
+        if !list.contains(where: { $0["replayranking_publisher_displayname_leaderboard"] == publisher && $0["multiplayer_post_textcontent_cooperative"] == content }) {
+            list.append(postData)
+        }
+        all[currentAccountIdentifier] = list
+        UserDefaults.standard.set(all, forKey: likedPostStorageKey)
+    }
+    
+    func communitydownvote_unlikepost_fromlist_disengage(_ publisher: String, content: String) {
+        var all = UserDefaults.standard.dictionary(forKey: likedPostStorageKey) as? [String: [[String: String]]] ?? [:]
+        var list = all[currentAccountIdentifier] ?? []
+        list.removeAll { $0["replayranking_publisher_displayname_leaderboard"] == publisher && $0["multiplayer_post_textcontent_cooperative"] == content }
+        all[currentAccountIdentifier] = list
+        UserDefaults.standard.set(all, forKey: likedPostStorageKey)
+    }
+    
+    func feedreaction_current_likedpostlist_trending() -> [[String: String]] {
+        let all = UserDefaults.standard.dictionary(forKey: likedPostStorageKey) as? [String: [[String: String]]] ?? [:]
+        return all[currentAccountIdentifier] ?? []
+    }
+    
+    func socialvalidation_ispost_liked_confirmation(_ publisher: String, content: String) -> Bool {
+        return feedreaction_current_likedpostlist_trending().contains { $0["replayranking_publisher_displayname_leaderboard"] == publisher && $0["multiplayer_post_textcontent_cooperative"] == content }
+    }
+    
+    // MARK: - 聊天记录（按账号+聊天对象隔离）
+    
+    private let chatRecordStorageKey = "AccountChatRecordStorage"
+    
+    func dialoguetranscript_sendmessage_tochat(_ targetNickname: String, text: String) {
+        let chatKey = "\(currentAccountIdentifier)_\(targetNickname)"
+        var all = UserDefaults.standard.dictionary(forKey: chatRecordStorageKey) as? [String: [[String: String]]] ?? [:]
+        var list = all[chatKey] ?? []
+        list.append(["text": text, "sender": "me"])
+        all[chatKey] = list
+        UserDefaults.standard.set(all, forKey: chatRecordStorageKey)
+    }
+    
+    func conversationhistory_current_chatrecords_retrieve(_ targetNickname: String) -> [[String: String]] {
+        let chatKey = "\(currentAccountIdentifier)_\(targetNickname)"
+        let all = UserDefaults.standard.dictionary(forKey: chatRecordStorageKey) as? [String: [[String: String]]] ?? [:]
+        return all[chatKey] ?? []
+    }
+    
+    // MARK: - 好友列表（按账号隔离）
+    
+    func rosterconnection_current_friendslist_retrieve() -> [[String: String]] {
+        let key = "AccountFriendsListStorage_\(currentAccountIdentifier)"
+        return UserDefaults.standard.array(forKey: key) as? [[String: String]] ?? []
+    }
+    
+    func rosterconnection_save_friendslist(_ list: [[String: String]]) {
+        let key = "AccountFriendsListStorage_\(currentAccountIdentifier)"
+        UserDefaults.standard.set(list, forKey: key)
+    }
+    
+    // MARK: - 视频评论（按账号+视频隔离）
+    
+    private let videoCommentStorageKey = "AccountVideoCommentStorage"
+    
+    func threadreply_postcomment_tovideo(_ videoFilename: String, text: String) {
+        let profile = dashboardsnapshot_load_userprofile()
+        let nickname = profile["processhandler_profile_nickname_manager"] ?? "Me"
+        let commentKey = "\(currentAccountIdentifier)_\(videoFilename)"
+        var all = UserDefaults.standard.dictionary(forKey: videoCommentStorageKey) as? [String: [[String: String]]] ?? [:]
+        var list = all[commentKey] ?? []
+        list.append(["nickname": nickname, "text": text, "sender": "me"])
+        all[commentKey] = list
+        UserDefaults.standard.set(all, forKey: videoCommentStorageKey)
+    }
+    
+    func threadhistory_videocomments_retrieve(_ videoFilename: String) -> [[String: String]] {
+        let commentKey = "\(currentAccountIdentifier)_\(videoFilename)"
+        let all = UserDefaults.standard.dictionary(forKey: videoCommentStorageKey) as? [String: [[String: String]]] ?? [:]
+        return all[commentKey] ?? []
+    }
+    
+    func threadremove_deletecomment_fromvideo(_ videoFilename: String, at index: Int) {
+        let commentKey = "\(currentAccountIdentifier)_\(videoFilename)"
+        var all = UserDefaults.standard.dictionary(forKey: videoCommentStorageKey) as? [String: [[String: String]]] ?? [:]
+        var list = all[commentKey] ?? []
+        guard index < list.count else { return }
+        list.remove(at: index)
+        all[commentKey] = list
+        UserDefaults.standard.set(all, forKey: videoCommentStorageKey)
     }
 }

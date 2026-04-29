@@ -3,16 +3,21 @@ import UIKit
 
 class OnlineGiftsView: UIView {
 
-    @IBOutlet weak var online_balance_label: UILabel!
-    @IBOutlet weak var online_number_label: UILabel!
+    @IBOutlet weak var online_balance_label: UILabel! // 金币余额
+    @IBOutlet weak var online_number_label: UILabel! // 打赏份数
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var online_reduct_button: UIButton!
-    @IBOutlet weak var online_add_button: UIButton!
+    @IBOutlet weak var online_reduct_button: UIButton! // 减少按钮
+    @IBOutlet weak var online_add_button: UIButton! // 增加好友
     var online_gifts_list: [[String: String]] = [[String: String]]()
+    var online_select_tag: Int = 0
+    var giftCount: Int = 1
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         online_giftsMetedataList()
         setupUIOnlineGiftsCollectionView()
+        refreshBalanceDisplay()
+        updateNumberLabel()
     }
     
     func setupUIOnlineGiftsCollectionView() {
@@ -49,13 +54,69 @@ class OnlineGiftsView: UIView {
         }
     }
     
+    @IBAction func onlineAddOrShaoCountClick(_ sender: UIButton) {
+        if sender.tag == 311 { // 减少
+            if giftCount > 1 {
+                giftCount -= 1
+            }
+        }
+        else { // 增加
+            giftCount += 1
+        }
+        updateNumberLabel()
+    }
+    
+    func updateNumberLabel() {
+        let dict = online_gifts_list[online_select_tag]
+        let unitPrice = Int(dict["gifts_coins"] ?? "0") ?? 0
+        let total = unitPrice * giftCount
+        online_number_label.text = "\(giftCount)"
+    }
+    
+    func refreshBalanceDisplay() {
+        let profile = GameDataManager.shared.dashboardsnapshot_load_userprofile()
+        let coins = profile["executor_wallet_coinsbalance_observerlistenerdelegate"] ?? "0"
+        online_balance_label.text = coins
+    }
+    
+    
+    // 打赏礼物
     @IBAction func onlineSendGiftsClick(_ sender: Any) {
+        let dict = online_gifts_list[online_select_tag]
+        let unitPrice = Int(dict["gifts_coins"] ?? "0") ?? 0
+        let totalCost = unitPrice * giftCount
         
+        var profile = GameDataManager.shared.dashboardsnapshot_load_userprofile()
+        let balance = Int(profile["executor_wallet_coinsbalance_observerlistenerdelegate"] ?? "0") ?? 0
+        
+        if balance < totalCost {
+            GameLoadingHUD.gameLoadingText("Insufficient coins, \(totalCost) coins required.", in: self)
+            return
+        }
+        
+        profile["executor_wallet_coinsbalance_observerlistenerdelegate"] = "\(balance - totalCost)"
+        GameDataManager.shared.dashboardsnapshot_save_userprofile(profile)
+        refreshBalanceDisplay()
+        
+        GameLoadingHUD.gameLoadingSuccess("Sent \(giftCount) gift(s)! -\(totalCost) coins", in: self)
+        
+        if let giftImage = UIImage(named: dict["gifts_icon"] ?? "") {
+            let profile = GameDataManager.shared.dashboardsnapshot_load_userprofile()
+            let nickname = profile["processhandler_profile_nickname_manager"] ?? "Me"
+            if let parentVC = self.superview {
+                online_giftViewingAnimation(giftImage: giftImage, senderName: nickname, in: parentVC)
+                if totalCost >= 100 {
+                    playFullScreenAnimation(giftImage: giftImage, senderName: nickname, in: parentVC)
+                }
+            }
+        }
+        
+        giftCount = 1
+        updateNumberLabel()
     }
     
     func playFullScreenAnimation(giftImage: UIImage, senderName: String, in containerView: UIView) {
-        
-        // === 阶段 1：闪白 ===
+    
         let flash = UIView(frame: containerView.bounds)
         flash.backgroundColor = UIColor.white.withAlphaComponent(0.6)
         flash.alpha = 0
@@ -176,12 +237,22 @@ extension OnlineGiftsView: UICollectionViewDataSource, UICollectionViewDelegate 
         cell.backgroundColor = .clear
         cell.cell_gift_coins_label.text = dict["gifts_coins"]
         cell.cell_gift_image.image = UIImage(named: dict["gifts_icon", default: ""])
+        if indexPath.item == online_select_tag {
+            cell.layer.borderWidth = 2
+            cell.layer.borderColor = UIColor(red: 1, green: 0.6, blue: 0, alpha: 1).cgColor
+            cell.layer.cornerRadius = 10
+        } else {
+            cell.layer.borderWidth = 0
+            cell.layer.borderColor = UIColor.clear.cgColor
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let dict = online_gifts_list[indexPath.item]
-        online_giftViewingAnimation(giftImage: UIImage(named: dict["gifts_icon"]!)!, senderName: "Me", in: self)
+        online_select_tag = indexPath.item
+        giftCount = 1
+        updateNumberLabel()
+        collectionView.reloadData()
     }
     
     func online_giftViewingAnimation(giftImage: UIImage, senderName: String, in containerView: UIView) {

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -47,16 +48,31 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KC-Qo-VuD">
+                        <rect key="frame" x="130" y="24" width="32" height="32"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="delete_comment"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="rup-DQ-col" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="F62-tz-Emm"/>
+                    <constraint firstItem="6KC-Qo-VuD" firstAttribute="leading" secondItem="rup-DQ-col" secondAttribute="trailing" constant="16" id="JTT-t0-et6"/>
                     <constraint firstAttribute="bottom" secondItem="rup-DQ-col" secondAttribute="bottom" constant="12" id="Re1-Zb-W9t"/>
                     <constraint firstItem="rup-DQ-col" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="23" id="o0P-cG-vhM"/>
+                    <constraint firstItem="6KC-Qo-VuD" firstAttribute="centerY" secondItem="rup-DQ-col" secondAttribute="centerY" id="rWJ-D9-aew"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rup-DQ-col" secondAttribute="trailing" constant="56" id="yeS-qa-TA3"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="comment_content_label" destination="sLK-m6-EXs" id="Yzf-87-Act"/>
+                <outlet property="comment_user_name_label" destination="wV6-Ao-t6E" id="iBj-30-YVW"/>
+                <outlet property="delete_comment_button" destination="6KC-Qo-VuD" id="YzP-vZ-jEB"/>
+            </connections>
             <point key="canvasLocation" x="168.70229007633588" y="36.619718309859159"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="delete_comment" width="32" height="32"/>
+    </resources>
 </document>

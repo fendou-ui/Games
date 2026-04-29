@@ -17,7 +17,7 @@ class LoginAndRegisterVC: UIViewController {
     var isPrivacy: Bool = false
     
     /**
-     测试账号：playgames@gmail.com
+     测试账号2：game123@gmail.com
      密码：123456
      */
     override func viewDidLoad() {
@@ -114,10 +114,22 @@ class LoginAndRegisterVC: UIViewController {
         
         accounts[email] = password
         UserDefaults.standard.set(accounts, forKey: "GameRegisteredAccounts")
+        UserDefaults.standard.set(email, forKey: "CurrentLoggedInAccount")
+        
+        let profileKey = "AccountUserProfileStorage_\(email)"
+        if UserDefaults.standard.dictionary(forKey: profileKey) == nil {
+            let profile: [String: String] = [
+                "processhandler_profile_nickname_manager": "",
+                "controllerserviceprovider_profile_avatarimage_adapter": "",
+                "factory_profile_fanstotal_buildergeneratorresolver": "0",
+                "coordinatordispatcher_profile_followingtotal_scheduler": "0",
+                "executor_wallet_coinsbalance_observerlistenerdelegate": "200"
+            ]
+            UserDefaults.standard.set(profile, forKey: profileKey)
+        }
         
         GameLoadingHUD.gameLoadingSuccess("Registration successful", in: self.view)
-        UserDefaults.standard.set(email, forKey: "CurrentLoggedInAccount")
-        gameAccountRegisterAndLoginSuccess()
+        gameAccountRegisterGoToEditProfile()
     }
     
     func gameLoginAccount(email: String, password: String) {
@@ -146,6 +158,15 @@ class LoginAndRegisterVC: UIViewController {
         }
     }
     
+    func gameAccountRegisterGoToEditProfile() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            let editVC = MyEditProfileViewController()
+            editVC.isFromRegister = true
+            editVC.modalPresentationStyle = .fullScreen
+            self.present(editVC, animated: true)
+        }
+    }
+    
 }
 
 // Apple 登录
@@ -168,8 +189,25 @@ extension LoginAndRegisterVC: ASAuthorizationControllerDelegate, ASAuthorization
             UserDefaults.standard.set(email, forKey: "GameAppleUserEmail")
             UserDefaults.standard.set(fullName, forKey: "GameAppleUserName")
             
+            let profileKey = "AccountUserProfileStorage_\(userID)"
+            let isNewUser = UserDefaults.standard.dictionary(forKey: profileKey) == nil
+            if isNewUser {
+                let profile: [String: String] = [
+                    "processhandler_profile_nickname_manager": fullName.isEmpty ? "Player" : fullName,
+                    "controllerserviceprovider_profile_avatarimage_adapter": "",
+                    "factory_profile_fanstotal_buildergeneratorresolver": "0",
+                    "coordinatordispatcher_profile_followingtotal_scheduler": "0",
+                    "executor_wallet_coinsbalance_observerlistenerdelegate": "200"
+                ]
+                UserDefaults.standard.set(profile, forKey: profileKey)
+            }
+            
             GameLoadingHUD.gameLoadingSuccess("Login successful", in: self.view)
-            gameAccountRegisterAndLoginSuccess()
+            if isNewUser {
+                gameAccountRegisterGoToEditProfile()
+            } else {
+                gameAccountRegisterAndLoginSuccess()
+            }
         }
     }
     
