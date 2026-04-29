@@ -11,6 +11,7 @@ class OpenPlayerVideoVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var open_player_textFiled: UITextField!
     @IBOutlet weak var open_player_like_button: UIButton!
+    @IBOutlet weak var pause_play_video_button: UIButton!
     
     var shortVideoData: [String: String] = [:]
     private var shortVideoPlayer: AVPlayer?
@@ -60,6 +61,9 @@ class OpenPlayerVideoVC: UIViewController {
     }
     
     private func setupShortVideoPlayer() {
+        try? AVAudioSession.sharedInstance().setCategory(.playback)
+        try? AVAudioSession.sharedInstance().setActive(true)
+        
         guard let filename = shortVideoData["streamplayback_video_filename_buffering"],
               let videoPath = Bundle.main.path(forResource: filename, ofType: "mp4") else { return }
         let videoURL = URL(fileURLWithPath: videoPath)
@@ -166,6 +170,15 @@ class OpenPlayerVideoVC: UIViewController {
                 sender.setBackgroundImage(UIImage(named: "open_play_mp4_like_yellow"), for: .normal)
             }
             return
+        }
+        if sender.tag == 318 { // 暂停播放
+            if shortVideoPlayer?.rate == 0 {
+                shortVideoPlayer?.play()
+                pause_play_video_button.isSelected = false
+            } else {
+                shortVideoPlayer?.pause()
+                pause_play_video_button.isSelected = true
+            }
         }
     }
     

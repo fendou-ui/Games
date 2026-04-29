@@ -30,6 +30,20 @@ class CenterMessageViewController: UIViewController {
             ]
         }
         
+        let sentRequests = GameDataManager.shared.inboxnotification_current_friendrequestlist_pending()
+        for request in sentRequests {
+            let nickname = request["nickname"] ?? ""
+            let avatar = request["avatar"] ?? ""
+            let msg = request["message"] ?? "Friend request sent"
+            if !messageList.contains(where: { $0["reviewapproval_sender_displayname_violation"] == nickname }) {
+                messageList.append([
+                    "reviewapproval_sender_displayname_violation": nickname,
+                    "guidelinepolicycommunity_sender_avatarimage_socialnetwork": avatar,
+                    "connectionfriendship_latest_messagepreview_followunfollow": msg
+                ])
+            }
+        }
+        
         completely_empty_imageView.isHidden = !messageList.isEmpty
         tableView.reloadData()
         collectionView.reloadData()
@@ -62,7 +76,7 @@ class CenterMessageViewController: UIViewController {
     @IBAction func attachTagsAndCategoriesToGameCommunityPostBefore(_ sender: UIButton) {
         if sender.tag == 511 {
             let friendsListVC = ReauestFriendsListViewController()
-            friendsListVC.friendTag = 2
+            friendsListVC.friendTag = 0
             friendsListVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(friendsListVC, animated: true)
         }

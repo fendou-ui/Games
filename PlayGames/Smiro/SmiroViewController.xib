@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -10,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SmiroViewController" customModule="PlayGames" customModuleProvider="target">
             <connections>
+                <outlet property="completely_empty_imageView" destination="wDK-Ex-sYi" id="et2-cv-HkQ"/>
                 <outlet property="follow_button" destination="0mJ-PJ-3Wn" id="H1A-wM-LkE"/>
                 <outlet property="online_collectionView" destination="9xB-mp-Gym" id="wff-ZA-0C6"/>
                 <outlet property="popular_button" destination="8xu-Gs-9lB" id="ck5-qa-qyq"/>
@@ -113,6 +115,9 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="completely_empty" translatesAutoresizingMaskIntoConstraints="NO" id="wDK-Ex-sYi">
+                    <rect key="frame" x="162.66666666666666" y="560" width="68" height="92"/>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -132,9 +137,11 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xef-ww-GLP" secondAttribute="trailing" id="SJk-8m-eeI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xDb-ZD-Nrm" secondAttribute="trailing" id="V30-1y-Ary"/>
                 <constraint firstItem="xef-ww-GLP" firstAttribute="top" secondItem="Gyi-vo-L6w" secondAttribute="bottom" constant="12" id="XXA-mZ-VSD"/>
+                <constraint firstItem="xtH-RS-ZAG" firstAttribute="centerY" secondItem="wDK-Ex-sYi" secondAttribute="centerY" id="dae-PV-0n5"/>
                 <constraint firstItem="Gyi-vo-L6w" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="21" id="nDs-sU-ZZ3"/>
                 <constraint firstItem="xtH-RS-ZAG" firstAttribute="top" secondItem="xef-ww-GLP" secondAttribute="bottom" constant="10" id="rYd-CI-Hfk"/>
                 <constraint firstItem="xDb-ZD-Nrm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vWO-V8-Q8d"/>
+                <constraint firstItem="xtH-RS-ZAG" firstAttribute="centerX" secondItem="wDK-Ex-sYi" secondAttribute="centerX" id="zss-1E-5dA"/>
             </constraints>
             <point key="canvasLocation" x="179" y="15"/>
         </view>
@@ -142,6 +149,7 @@
     <resources>
         <image name="Short_Video" width="81.333335876464844" height="13.666666984558105"/>
         <image name="Smiro" width="112.33333587646484" height="18"/>
+        <image name="completely_empty" width="68" height="92"/>
         <image name="smir_bg" width="390" height="844"/>
         <image name="smiro_video" width="73" height="30"/>
         <image name="title_following" width="98" height="30"/>

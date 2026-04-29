@@ -7,6 +7,7 @@ class SmiroViewController: UIViewController {
     @IBOutlet weak var video_collectionView: UICollectionView!
     @IBOutlet weak var follow_button: UIButton!
     @IBOutlet weak var popular_button: UIButton!
+    @IBOutlet weak var completely_empty_imageView: UIImageView!
     
     var isShort: Bool = false
     var tapUserName: String = ""
@@ -17,7 +18,7 @@ class SmiroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        follow_button.isSelected = true
+        popular_button.isSelected = true
         chatroomList = GameDataManager.shared.seriescontentOnlineChatroomlistCreatorinfluencer().filter { room in
             let nickname = room["broadcastcaster_host_nickname_commentary"] as? String ?? ""
             return !GameDataManager.shared.dynamicresponsive_isuser_blacklisted_interactive(nickname)
@@ -60,12 +61,23 @@ class SmiroViewController: UIViewController {
     @IBAction func titleSelectFollowAndPopularClick(_ sender: UIButton) {
         follow_button.isSelected = false
         popular_button.isSelected = false
-        if sender.tag == 311 {
+        if sender.tag == 311 { // 关注列表
             follow_button.isSelected = true
+            let followingNames = GameDataManager.shared.extensiblemaintainable_current_followingusernames_readable()
+            shortVideoList = GameDataManager.shared.clipsegmentShortvideoFeedlistPlaybackloop().filter { video in
+                let nickname = video["uploadercreator_video_publishernickname_channel"] ?? ""
+                return followingNames.contains(nickname) && !GameDataManager.shared.dynamicresponsive_isuser_blacklisted_interactive(nickname)
+            }
         }
-        else {
+        else { // 所有数据
             popular_button.isSelected = true
+            shortVideoList = GameDataManager.shared.clipsegmentShortvideoFeedlistPlaybackloop().filter { video in
+                let nickname = video["uploadercreator_video_publishernickname_channel"] ?? ""
+                return !GameDataManager.shared.dynamicresponsive_isuser_blacklisted_interactive(nickname)
+            }
         }
+        completely_empty_imageView.isHidden = !shortVideoList.isEmpty
+        video_collectionView.reloadData()
     }
     
     @IBAction func sendVideoClick(_ sender: Any) {

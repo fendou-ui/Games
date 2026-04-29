@@ -38,20 +38,14 @@ class GameDataManager {
         return jsonData["identitysubscription_discover_commentslist_donationrewardcurrency"] as? [[String: String]] ?? []
     }
     
-    func filtersafetysecurityCenterMessagelistReport() -> [[String: String]] {
-        return jsonData["filtersafetysecurity_center_messagelist_report"] as? [[String: String]] ?? []
-    }
-    
-    func blockmutediscoverFriendsChatrecordsExploretrendingpopular() -> [[String: String]] {
-        return jsonData["blockmutediscover_friends_chatrecords_exploretrendingpopular"] as? [[String: String]] ?? []
-    }
-    
     func personalizedanalyticsmetricsPendingFriendrequestInsight() -> [[String: String]] {
-        return jsonData["personalizedanalyticsmetrics_pending_friendrequest_insight"] as? [[String: String]] ?? []
-    }
-    
-    func renderingplaybacktimelineFollowingBlacklistusersSchedule() -> [[String: String]] {
-        return jsonData["renderingplaybacktimeline_following_blacklistusers_schedule"] as? [[String: String]] ?? []
+        let raw = jsonData["personalizedanalyticsmetrics_pending_friendrequest_insight"] as? [[String: String]] ?? []
+        return raw.map {
+            [
+                "nickname": $0["trackingperformance_requester_nickname_latencybandwidth"] ?? "",
+                "avatar": $0["resolution_requester_avatarimage_qualitybufferingencodingdecoding"] ?? ""
+            ]
+        }
     }
     
     func seriescontentOnlineChatroomlistCreatorinfluencer() -> [[String: Any]] {

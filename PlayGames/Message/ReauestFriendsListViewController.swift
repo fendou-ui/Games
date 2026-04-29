@@ -23,7 +23,7 @@ class ReauestFriendsListViewController: UIViewController {
         }
         else {
             friend_list_title.text = "Friend request"
-            friendRequestList = GameDataManager.shared.inboxnotification_current_friendrequestlist_pending()
+            friendRequestList = GameDataManager.shared.personalizedanalyticsmetricsPendingFriendrequestInsight()
         }
         
         completely_empty_imageView.isHidden = !friendRequestList.isEmpty
@@ -34,6 +34,26 @@ class ReauestFriendsListViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    // 同意好友请求
+    @objc func agreeAddFriendQuestClick(_ sender: UIButton) {
+        let index = sender.tag
+        guard index < friendRequestList.count else { return }
+        let request = friendRequestList[index]
+        
+        // 加入好友列表
+        var currentFriends = GameDataManager.shared.rosterconnection_current_friendslist_retrieve()
+        if !currentFriends.contains(where: { $0["nickname"] == request["nickname"] }) {
+            currentFriends.append(request)
+            GameDataManager.shared.rosterconnection_save_friendslist(currentFriends)
+        }
+        
+        // 从请求列表移除
+        friendRequestList.remove(at: index)
+        completely_empty_imageView.isHidden = !friendRequestList.isEmpty
+        tableView.reloadData()
+        
+        GameLoadingHUD.gameLoadingSuccess("You are now friends with \(request["nickname"] ?? "")", in: self.view)
+    }
 
 }
 
@@ -52,6 +72,11 @@ extension ReauestFriendsListViewController: UITableViewDelegate, UITableViewData
             cell.friends_user_avatar_imageView.image = UIImage(named: avatarName)
         }
         cell.friends_user_message_button.isHidden = true
+        if friendTag == 0 {
+            cell.friends_user_message_button.isHidden = false
+            cell.friends_user_message_button.tag = indexPath.row
+            cell.friends_user_message_button.addTarget(self, action: #selector(agreeAddFriendQuestClick(_ :)), for: .touchUpInside)
+        }
         return cell
     }
     

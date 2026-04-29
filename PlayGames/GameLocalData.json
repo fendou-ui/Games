@@ -6,7 +6,7 @@
             "arena_post_publishtime_matchmakinglobbyspectator": "2 hours ago",
             "multiplayer_post_textcontent_cooperative": "Just hit a new high score! This game is amazing 🎮",
             "strategytacticsscoreboard_total_likecount_progression": "128",
-            "leveling_total_commentcount_upgradeinventoryequipment": "32",
+            "leveling_total_commentcount_upgradeinventoryequipment": "0",
             "avatar_post_coverimage_characterprofilenickname": "highscore_moment_cover"
         },
         {
@@ -15,7 +15,7 @@
             "arena_post_publishtime_matchmakinglobbyspectator": "5 hours ago",
             "multiplayer_post_textcontent_cooperative": "Anyone want to team up for the new raid? Looking for skilled players!",
             "strategytacticsscoreboard_total_likecount_progression": "86",
-            "leveling_total_commentcount_upgradeinventoryequipment": "21",
+            "leveling_total_commentcount_upgradeinventoryequipment": "0",
             "avatar_post_coverimage_characterprofilenickname": "raid_teamup_cover"
         },
         {
@@ -24,7 +24,7 @@
             "arena_post_publishtime_matchmakinglobbyspectator": "8 hours ago",
             "multiplayer_post_textcontent_cooperative": "Check out my latest gameplay video! Epic boss fight 🔥",
             "strategytacticsscoreboard_total_likecount_progression": "256",
-            "leveling_total_commentcount_upgradeinventoryequipment": "45",
+            "leveling_total_commentcount_upgradeinventoryequipment": "0",
             "avatar_post_coverimage_characterprofilenickname": "bossfight_epic_cover"
         },
         {
@@ -33,7 +33,7 @@
             "arena_post_publishtime_matchmakinglobbyspectator": "1 day ago",
             "multiplayer_post_textcontent_cooperative": "Finally unlocked the legendary skin! Took me 3 months 😎",
             "strategytacticsscoreboard_total_likecount_progression": "342",
-            "leveling_total_commentcount_upgradeinventoryequipment": "67",
+            "leveling_total_commentcount_upgradeinventoryequipment": "0",
             "avatar_post_coverimage_characterprofilenickname": "legendary_skin_cover"
         },
         {
@@ -42,7 +42,7 @@
             "arena_post_publishtime_matchmakinglobbyspectator": "2 days ago",
             "multiplayer_post_textcontent_cooperative": "New update is live! The map changes are insane",
             "strategytacticsscoreboard_total_likecount_progression": "198",
-            "leveling_total_commentcount_upgradeinventoryequipment": "53",
+            "leveling_total_commentcount_upgradeinventoryequipment": "0",
             "avatar_post_coverimage_characterprofilenickname": "mapupdate_live_cover"
         },
         {
@@ -51,7 +51,7 @@
             "arena_post_publishtime_matchmakinglobbyspectator": "3 hours ago",
             "multiplayer_post_textcontent_cooperative": "Excited to share my first victory royale! Never giving up pays off 🏆",
             "strategytacticsscoreboard_total_likecount_progression": "76",
-            "leveling_total_commentcount_upgradeinventoryequipment": "18",
+            "leveling_total_commentcount_upgradeinventoryequipment": "0",
             "avatar_post_coverimage_characterprofilenickname": "hjbewhj_dfbw_cbdf"
         }
     ],
@@ -72,50 +72,18 @@
             "reactionemojisticker_comment_textcontent_moderation": "This is awesome, keep it up!"
         }
     ],
-    "filtersafetysecurity_center_messagelist_report": [
-        {
-            "reviewapproval_sender_displayname_violation": "GamerKing",
-            "guidelinepolicycommunity_sender_avatarimage_socialnetwork": "blazerunner_portrait",
-            "connectionfriendship_latest_messagepreview_followunfollow": "Hey! Wanna play tonight?"
-        },
-        {
-            "reviewapproval_sender_displayname_violation": "PlayMaster",
-            "guidelinepolicycommunity_sender_avatarimage_socialnetwork": "vortexknight_portrait",
-            "connectionfriendship_latest_messagepreview_followunfollow": "GG! That was a great match 🎮"
-        },
-        {
-            "reviewapproval_sender_displayname_violation": "ShadowHunter",
-            "guidelinepolicycommunity_sender_avatarimage_socialnetwork": "duskwarden_portrait",
-            "connectionfriendship_latest_messagepreview_followunfollow": "Check out the new event!"
-        }
-    ],
-    "blockmutediscover_friends_chatrecords_exploretrendingpopular": [
-        { "featured_chat_bubbletext_recommendedalgorithm": "Hey, are you online?" },
-        { "featured_chat_bubbletext_recommendedalgorithm": "Yeah, let's start a match!" },
-        { "featured_chat_bubbletext_recommendedalgorithm": "Sounds good, I'll invite you 🎮" }
-    ],
     "personalizedanalyticsmetrics_pending_friendrequest_insight": [
         {
-            "trackingperformance_requester_nickname_latencybandwidth": "DragonSlayer",
-            "resolution_requester_avatarimage_qualitybufferingencodingdecoding": "wildforge_portrait"
+            "trackingperformance_requester_nickname_latencybandwidth": "GamerKing",
+            "resolution_requester_avatarimage_qualitybufferingencodingdecoding": "blazerunner_portrait"
         },
         {
-            "trackingperformance_requester_nickname_latencybandwidth": "MysticMage",
-            "resolution_requester_avatarimage_qualitybufferingencodingdecoding": "crimsonark_portrait"
+            "trackingperformance_requester_nickname_latencybandwidth": "PlayMaster",
+            "resolution_requester_avatarimage_qualitybufferingencodingdecoding": "vortexknight_portrait"
         },
         {
-            "trackingperformance_requester_nickname_latencybandwidth": "IronKnight",
-            "resolution_requester_avatarimage_qualitybufferingencodingdecoding": "stormcaller_portrait"
-        }
-    ],
-    "renderingplaybacktimeline_following_blacklistusers_schedule": [
-        {
-            "calendareventtournament_target_usernickname_competition": "GamerKing",
-            "championship_target_useravatar_seasonepisode": "blazerunner_portrait"
-        },
-        {
-            "calendareventtournament_target_usernickname_competition": "StarPlayer",
-            "championship_target_useravatar_seasonepisode": "frostblade_portrait"
+            "trackingperformance_requester_nickname_latencybandwidth": "ShadowHunter",
+            "resolution_requester_avatarimage_qualitybufferingencodingdecoding": "duskwarden_portrait"
         }
     ],
     "seriescontent_online_chatroomlist_creatorinfluencer": [
@@ -181,14 +149,14 @@
     ],
     "transmissionconnection_wallet_rechargeoptions_reconnectionauthentication": [
         { "authorizationverification_coins_amount_validation": "60", "encryptiondecryption_purchase_price_compression": "$0.99" },
-        { "authorizationverification_coins_amount_validation": "300", "encryptiondecryption_purchase_price_compression": "$4.99" },
-        { "authorizationverification_coins_amount_validation": "600", "encryptiondecryption_purchase_price_compression": "$9.99" },
-        { "authorizationverification_coins_amount_validation": "1200", "encryptiondecryption_purchase_price_compression": "$19.99" },
-        { "authorizationverification_coins_amount_validation": "2500", "encryptiondecryption_purchase_price_compression": "$39.99" },
-        { "authorizationverification_coins_amount_validation": "5000", "encryptiondecryption_purchase_price_compression": "$69.99" },
-        { "authorizationverification_coins_amount_validation": "6500", "encryptiondecryption_purchase_price_compression": "$99.99" },
-        { "authorizationverification_coins_amount_validation": "10000", "encryptiondecryption_purchase_price_compression": "$149.99" },
-        { "authorizationverification_coins_amount_validation": "16000", "encryptiondecryption_purchase_price_compression": "$249.99" }
+        { "authorizationverification_coins_amount_validation": "300", "encryptiondecryption_purchase_price_compression": "$1.99" },
+        { "authorizationverification_coins_amount_validation": "600", "encryptiondecryption_purchase_price_compression": "$4.99" },
+        { "authorizationverification_coins_amount_validation": "1200", "encryptiondecryption_purchase_price_compression": "$9.99" },
+        { "authorizationverification_coins_amount_validation": "2500", "encryptiondecryption_purchase_price_compression": "$19.99" },
+        { "authorizationverification_coins_amount_validation": "5000", "encryptiondecryption_purchase_price_compression": "$24.99" },
+        { "authorizationverification_coins_amount_validation": "6500", "encryptiondecryption_purchase_price_compression": "$49.99" },
+        { "authorizationverification_coins_amount_validation": "10000", "encryptiondecryption_purchase_price_compression": "$69.99" },
+        { "authorizationverification_coins_amount_validation": "16000", "encryptiondecryption_purchase_price_compression": "$99.99" }
     ],
     "scalabilityavailability_settings_menuitems_reliabilitystability": [
         { "consistency_menu_iconname_persistencestorage": "dfmniqwe", "databasequery_menu_itemtitle_indexing": "Video with likes" },
