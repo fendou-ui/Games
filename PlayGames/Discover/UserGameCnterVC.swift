@@ -143,6 +143,10 @@ class UserGameCnterVC: UIViewController {
                     nav.popToViewController(vc, animated: true)
                     break
                 }
+                if vc is MyLikeVideoViewController {
+                    nav.popToViewController(vc, animated: true)
+                    break
+                }
             }
         }
     }

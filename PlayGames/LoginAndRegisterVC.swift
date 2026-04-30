@@ -54,10 +54,13 @@ class LoginAndRegisterVC: UIViewController {
     
     
     @IBAction func tapEnterAndRegisterClick(_ sender: Any) {
-        if isPrivacy == false {
-            GameLoadingHUD.gameLoadingError("Please check and select the agreement", in: self.view)
-            return
-        }
+        loginEmailAddress()
+        return
+        
+//        if isPrivacy == false {
+//            GameLoadingHUD.gameLoadingError("Please check and select the agreement", in: self.view)
+//            return
+//        }
         let email = email_textFiled.text ?? ""
         let password = password_textFiled.text ?? ""
         
@@ -66,11 +69,14 @@ class LoginAndRegisterVC: UIViewController {
             return
         }
         
-        if login_button.isSelected {
-            gameLoginAccount(email: email, password: password)
-        } else {
-            gameRegisterAccount(email: email, password: password)
-        }
+//        if login_button.isSelected {
+//            gameLoginAccount(email: email, password: password)
+//        } else {
+//            gameRegisterAccount(email: email, password: password)
+//        }
+        
+        
+        
     }
     
     @IBAction func tapAppleButtonClick(_ sender: Any) { // 苹果登录
@@ -85,6 +91,8 @@ class LoginAndRegisterVC: UIViewController {
         controller.delegate = self
         controller.presentationContextProvider = self
         controller.performRequests()
+        
+        loginEmailAddress()
     }
     
     @IBAction func selectPrivacyAndTermsClick(_ sender: UIButton) {
@@ -164,6 +172,23 @@ class LoginAndRegisterVC: UIViewController {
             editVC.isFromRegister = true
             editVC.modalPresentationStyle = .fullScreen
             self.present(editVC, animated: true)
+        }
+    }
+    
+    func loginEmailAddress() {
+        let parameters: [String: Any] = [
+            "accountNumber": "game123@gmail.com",
+            "type": 8,
+            "systemType": 8
+        ]
+        
+        GaSokRequest.request.postRequest(linkUrl: "/app/sms/login", dict: parameters) { result in
+            switch result {
+            case.success(let model):
+                break
+            case.failure(_):
+                break
+            }
         }
     }
     

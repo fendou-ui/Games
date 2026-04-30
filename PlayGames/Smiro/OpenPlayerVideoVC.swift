@@ -175,9 +175,11 @@ class OpenPlayerVideoVC: UIViewController {
             if shortVideoPlayer?.rate == 0 {
                 shortVideoPlayer?.play()
                 pause_play_video_button.isSelected = false
+                pause_play_video_button.setImage(UIImage(named: ""), for: .normal)
             } else {
                 shortVideoPlayer?.pause()
                 pause_play_video_button.isSelected = true
+                pause_play_video_button.setImage(UIImage(named: "open_play_mp4_pause"), for: .normal)
             }
         }
     }

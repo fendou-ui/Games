@@ -63,6 +63,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(friends, forKey: friendsKey)
         }
         
+        let fansKey = "AccountFansListStorage"
+        var allFans = UserDefaults.standard.dictionary(forKey: fansKey) as? [String: [[String: String]]] ?? [:]
+        if allFans["game123@gmail.com"] == nil {
+            allFans["game123@gmail.com"] = [
+                ["nickname": "GamerKing", "avatar": "blazerunner_portrait"],
+                ["nickname": "ShadowHunter", "avatar": "duskwarden_portrait"]
+            ]
+            UserDefaults.standard.set(allFans, forKey: fansKey)
+        }
+        
         let chatStorageKey = "AccountChatRecordStorage"
         var allChats = UserDefaults.standard.dictionary(forKey: chatStorageKey) as? [String: [[String: String]]] ?? [:]
         let starKey = "game123@gmail.com_StarPlayer"

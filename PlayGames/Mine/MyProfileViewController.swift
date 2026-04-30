@@ -15,6 +15,7 @@ class MyProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var user_center_videos_tap: UIButton!
+    @IBOutlet weak var user_cans_count_label: UILabel!
     @IBOutlet weak var user_center_posts_tap: UIButton!
     @IBOutlet weak var my_coins_balance_label: UILabel!
     
@@ -31,6 +32,9 @@ class MyProfileViewController: UIViewController {
         
         let followingCount = GameDataManager.shared.extensiblemaintainable_current_followingusernames_readable().count
         big_my_followed_count_label.text = "\(followingCount) Follows"
+        
+        let fansCount = GameDataManager.shared.viewership_current_fanslist_retrieve().count
+        user_cans_count_label.text = "\(fansCount) Fans"
         
         let coins = profile["executor_wallet_coinsbalance_observerlistenerdelegate"] ?? "0"
         my_coins_balance_label.text = coins
@@ -184,6 +188,7 @@ extension MyProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell.cell_discover_imageView.image = UIImage(named: coverName)
         }
         cell.cell_discover_follow_button.isHidden = true
+        cell.cell_discover_report_button.isHidden = true
         return cell
     }
     

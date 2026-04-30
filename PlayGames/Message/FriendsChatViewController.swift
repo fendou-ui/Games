@@ -99,6 +99,10 @@ class FriendsChatViewController: UIViewController, UITableViewDataSource, UITabl
                     nav.popToViewController(vc, animated: true)
                     break
                 }
+                if vc is MyLikeVideoViewController {
+                    nav.popToViewController(vc, animated: true)
+                    break
+                }
             }
         }
     }

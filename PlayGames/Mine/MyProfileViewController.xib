@@ -19,6 +19,7 @@
                 <outlet property="my_avatar_imageView" destination="9Xh-Ma-h6E" id="7fX-gb-qnG"/>
                 <outlet property="my_coins_balance_label" destination="fWQ-d6-cHb" id="zvY-U2-GyL"/>
                 <outlet property="tableView" destination="zag-QX-T0H" id="zBE-tg-uu8"/>
+                <outlet property="user_cans_count_label" destination="qKq-vI-wMd" id="wvQ-U3-inK"/>
                 <outlet property="user_center_posts_tap" destination="lLI-Jf-NR8" id="xlb-sW-yHg"/>
                 <outlet property="user_center_videos_tap" destination="RhW-Ee-nfK" id="xUu-6J-Lun"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

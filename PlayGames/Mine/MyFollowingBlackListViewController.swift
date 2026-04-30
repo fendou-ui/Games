@@ -24,6 +24,10 @@ class MyFollowingBlackListViewController: UIViewController {
         }
         if otherTag == 2 {
             title_label.text = "Fans"
+            let fansList = GameDataManager.shared.viewership_current_fanslist_retrieve()
+            follow_fans_black_list = fansList.map {
+                ["username": $0["nickname"] ?? "", "avatar": $0["avatar"] ?? ""]
+            }
         }
         if otherTag == 3 {
             title_label.text = "Follow"

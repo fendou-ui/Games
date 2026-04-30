@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,11 +28,6 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0M3-kb-XrS">
                         <rect key="frame" x="8" y="188" width="153" height="20"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLc-Nm-ap6">
-                                <rect key="frame" x="0.0" y="0.0" width="24" height="20"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="smiro_zan"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="---" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRV-n2-5kI">
                                 <rect key="frame" x="29" y="3.0000000000000009" width="17" height="14.333333333333336"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -47,19 +43,25 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smiro_message_icon" translatesAutoresizingMaskIntoConstraints="NO" id="bdU-Jh-dWN">
                                 <rect key="frame" x="73" y="0.0" width="24" height="20"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smiro_zan" translatesAutoresizingMaskIntoConstraints="NO" id="X7i-0q-BQd">
+                                <rect key="frame" x="0.0" y="0.0" width="24" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="IKU-Y4-OEy"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hLc-Nm-ap6" firstAttribute="top" secondItem="0M3-kb-XrS" secondAttribute="top" id="06w-SA-ygf"/>
+                            <constraint firstAttribute="bottom" secondItem="X7i-0q-BQd" secondAttribute="bottom" id="2Lm-S8-MIC"/>
+                            <constraint firstItem="X7i-0q-BQd" firstAttribute="top" secondItem="0M3-kb-XrS" secondAttribute="top" id="CNi-JY-idg"/>
                             <constraint firstItem="bdU-Jh-dWN" firstAttribute="centerY" secondItem="0M3-kb-XrS" secondAttribute="centerY" id="G1p-bK-sE4"/>
+                            <constraint firstItem="HRV-n2-5kI" firstAttribute="leading" secondItem="X7i-0q-BQd" secondAttribute="trailing" constant="5" id="Qay-a5-qv4"/>
                             <constraint firstAttribute="height" constant="20" id="X9O-cd-kHB"/>
-                            <constraint firstItem="HRV-n2-5kI" firstAttribute="leading" secondItem="hLc-Nm-ap6" secondAttribute="trailing" constant="5" id="mG7-4c-JAv"/>
-                            <constraint firstItem="hLc-Nm-ap6" firstAttribute="leading" secondItem="0M3-kb-XrS" secondAttribute="leading" id="n4G-NL-kI7"/>
                             <constraint firstItem="bdU-Jh-dWN" firstAttribute="leading" secondItem="HRV-n2-5kI" secondAttribute="trailing" constant="27" id="nRY-TM-C6Z"/>
-                            <constraint firstAttribute="bottom" secondItem="hLc-Nm-ap6" secondAttribute="bottom" id="rzC-0u-EmC"/>
                             <constraint firstItem="KkG-os-uRW" firstAttribute="centerY" secondItem="0M3-kb-XrS" secondAttribute="centerY" id="s9E-Gn-Wtu"/>
                             <constraint firstItem="HRV-n2-5kI" firstAttribute="centerY" secondItem="0M3-kb-XrS" secondAttribute="centerY" id="szf-55-bOq"/>
                             <constraint firstItem="KkG-os-uRW" firstAttribute="leading" secondItem="bdU-Jh-dWN" secondAttribute="trailing" constant="5" id="u7f-Yi-Jhz"/>
+                            <constraint firstItem="X7i-0q-BQd" firstAttribute="leading" secondItem="0M3-kb-XrS" secondAttribute="leading" id="w8m-7a-fPJ"/>
                         </constraints>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smiro_video_icon" translatesAutoresizingMaskIntoConstraints="NO" id="6Rv-cC-8yY">
@@ -96,7 +98,7 @@
             </constraints>
             <connections>
                 <outlet property="comment_video_count_label" destination="KkG-os-uRW" id="y0n-Rn-93t"/>
-                <outlet property="like_video_button" destination="hLc-Nm-ap6" id="p9F-8q-PTZ"/>
+                <outlet property="like_video_button" destination="X7i-0q-BQd" id="BzQ-ts-TNt"/>
                 <outlet property="like_video_count_label" destination="HRV-n2-5kI" id="pyx-nR-XrW"/>
                 <outlet property="report_video_button" destination="yvN-e5-VSd" id="QG1-VK-ZLb"/>
                 <outlet property="video_covert_imageView" destination="EAK-hH-72F" id="w62-tp-gIr"/>
