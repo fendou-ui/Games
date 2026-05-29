@@ -1,0 +1,498 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		94U1025P72022699KOT5G83N /* Pods_Lvsevb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2493GL917038OQ048S833952 /* Pods_Lvsevb.framework */; };
+		BO458JT9109V9K3M223QXPN6 /* NTeamupObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = VDRB1704HN5JPJX340I6G292 /* NTeamupObject.swift */; };
+		DH46R05U3119H6297083J5JY /* WKTRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = TNT3P47K179Y64A561954081 /* WKTRoomView.swift */; };
+		FMB40I7WP98R40245140655W /* TValidatorListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = MW5P5503MT632YBP5344NY8Y /* TValidatorListController.swift */; };
+		FN8087T4ZS1A36527J98488A /* WAArenaRealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = GD6615W34ZM729P7L571199K /* WAArenaRealmController.swift */; };
+		HX236Q374093G8764458015N /* SPRoarPlayObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = OF428S857C945PPWB9P181UU /* SPRoarPlayObject.swift */; };
+		KDW062912483D4I5995NN3S5 /* OKLoungeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = OD335771UB69I4866237I077 /* OKLoungeScreenView.swift */; };
+		RIDL096M0J400V492Z2QG1X3 /* YRequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = YP312R4Y9064M5640544Q4J8 /* YRequestListView.swift */; };
+		RQ5D1Y8THKSYD32A850Z8577 /* LQTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8562I34X9O4XX9W535Q218 /* LQTableView.swift */; };
+		RS700F43JX51A07WN8MW9E34 /* JGameTitanObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = XH02203171VMH7E32321T791 /* JGameTitanObject.swift */; };
+		TL064S1P5TZ34Y7H02EDH8S2 /* KLoginDriftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = YG9J54TLJ3X01329A4094I62 /* KLoginDriftView.swift */; };
+		VJK52CFYIW0038E68O672T35 /* GYYMainBlitzView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SJ0115126I00B813045N0556 /* GYYMainBlitzView.swift */; };
+		WHQ4F0U43Z9T8985878X9325 /* TCEpicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = PI13E9L32116QI044IP27Z9J /* TCEpicController.swift */; };
+		WPN3530234OW1U40031O51S2 /* CScreenUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = IT075KWP2G53G69TI19037D4 /* CScreenUserView.swift */; };
+		ZB4EPP9855337283U7P5619R /* FCollectionSkinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CQNP1F390G085NOFW2295J99 /* FCollectionSkinView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0Q53152IA1AQFR052F03C24B /* Pods-Lvsevb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lvsevb.debug.xcconfig"; path = "Target Support Files/Pods-Lvsevb/Pods-Lvsevb.debug.xcconfig"; sourceTree = "<group>"; };
+		2493GL917038OQ048S833952 /* Pods_Lvsevb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lvsevb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42Z39041U2L4OY40IV47T509 /* Pods-Lvsevb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lvsevb.release.xcconfig"; path = "Target Support Files/Pods-Lvsevb/Pods-Lvsevb.release.xcconfig"; sourceTree = "<group>"; };
+		AF8562I34X9O4XX9W535Q218 /* LQTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.swift; path = LQTableView.swift; sourceTree = "<group>"; };
+		CQNP1F390G085NOFW2295J99 /* FCollectionSkinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.swift; path = FCollectionSkinView.swift; sourceTree = "<group>"; };
+		FRJ25OH1836K5W6X6854458H /* Lvsevb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lvsevb.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		GD6615W34ZM729P7L571199K /* WAArenaRealmController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.swift; path = WAArenaRealmController.swift; sourceTree = "<group>"; };
+		IT075KWP2G53G69TI19037D4 /* CScreenUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.swift; path = CScreenUserView.swift; sourceTree = "<group>"; };
+		MW5P5503MT632YBP5344NY8Y /* TValidatorListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.swift; path = TValidatorListController.swift; sourceTree = "<group>"; };
+		OD335771UB69I4866237I077 /* OKLoungeScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.swift; path = OKLoungeScreenView.swift; sourceTree = "<group>"; };
+		OF428S857C945PPWB9P181UU /* SPRoarPlayObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.swift; path = SPRoarPlayObject.swift; sourceTree = "<group>"; };
+		PI13E9L32116QI044IP27Z9J /* TCEpicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.swift; path = TCEpicController.swift; sourceTree = "<group>"; };
+		SJ0115126I00B813045N0556 /* GYYMainBlitzView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.swift; path = GYYMainBlitzView.swift; sourceTree = "<group>"; };
+		TNT3P47K179Y64A561954081 /* WKTRoomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.swift; path = WKTRoomView.swift; sourceTree = "<group>"; };
+		VDRB1704HN5JPJX340I6G292 /* NTeamupObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.swift; path = NTeamupObject.swift; sourceTree = "<group>"; };
+		XH02203171VMH7E32321T791 /* JGameTitanObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.swift; path = JGameTitanObject.swift; sourceTree = "<group>"; };
+		YG9J54TLJ3X01329A4094I62 /* KLoginDriftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.swift; path = KLoginDriftView.swift; sourceTree = "<group>"; };
+		YP312R4Y9064M5640544Q4J8 /* YRequestListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.swift; path = YRequestListView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		7M86Y52B42P6D32J8981P6P0 /* Exceptions for "Lvsevb" folder in "Lvsevb" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 1Z5713V765G209YOZBL58W6G /* Lvsevb */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		12C33586665W8E1PY7U17508 /* Lvsevb */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7M86Y52B42P6D32J8981P6P0 /* Exceptions for "Lvsevb" folder in "Lvsevb" target */,
+			);
+			path = Lvsevb;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		LDVD527VYV38R0J8YE1753C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94U1025P72022699KOT5G83N /* Pods_Lvsevb.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6N1089828XK5251Y411362KN /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2493GL917038OQ048S833952 /* Pods_Lvsevb.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CO85S2585503269J771317Q1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0Q53152IA1AQFR052F03C24B /* Pods-Lvsevb.debug.xcconfig */,
+				42Z39041U2L4OY40IV47T509 /* Pods-Lvsevb.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CYEXL472Q6V4424382120340 = {
+			isa = PBXGroup;
+			children = (
+				12C33586665W8E1PY7U17508 /* Lvsevb */,
+				SKG0123037BQ732623Q886Y8 /* Products */,
+				CO85S2585503269J771317Q1 /* Pods */,
+				6N1089828XK5251Y411362KN /* Frameworks */,
+				NKF4QK2AK08P8S692PV28204 /* irdft */,
+			);
+			sourceTree = "<group>";
+		};
+		NKF4QK2AK08P8S692PV28204 /* irdft */ = {
+			isa = PBXGroup;
+			children = (
+				SJ0115126I00B813045N0556 /* GYYMainBlitzView.swift */,
+				TNT3P47K179Y64A561954081 /* WKTRoomView.swift */,
+				PI13E9L32116QI044IP27Z9J /* TCEpicController.swift */,
+				YP312R4Y9064M5640544Q4J8 /* YRequestListView.swift */,
+				OD335771UB69I4866237I077 /* OKLoungeScreenView.swift */,
+				VDRB1704HN5JPJX340I6G292 /* NTeamupObject.swift */,
+				AF8562I34X9O4XX9W535Q218 /* LQTableView.swift */,
+				MW5P5503MT632YBP5344NY8Y /* TValidatorListController.swift */,
+				GD6615W34ZM729P7L571199K /* WAArenaRealmController.swift */,
+				YG9J54TLJ3X01329A4094I62 /* KLoginDriftView.swift */,
+				CQNP1F390G085NOFW2295J99 /* FCollectionSkinView.swift */,
+				OF428S857C945PPWB9P181UU /* SPRoarPlayObject.swift */,
+				IT075KWP2G53G69TI19037D4 /* CScreenUserView.swift */,
+				XH02203171VMH7E32321T791 /* JGameTitanObject.swift */,
+			);
+			path = irdft;
+			sourceTree = "<group>";
+		};
+		SKG0123037BQ732623Q886Y8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FRJ25OH1836K5W6X6854458H /* Lvsevb.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1Z5713V765G209YOZBL58W6G /* Lvsevb */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40SEH7J4K78V71A91BDR8370 /* Build configuration list for PBXNativeTarget "Lvsevb" */;
+			buildPhases = (
+				3Y59G361633N1312H31Z2YW9 /* [CP] Check Pods Manifest.lock */,
+				1E23751L71I1257438KXLA40 /* Sources */,
+				LDVD527VYV38R0J8YE1753C6 /* Frameworks */,
+				763444VU372W99402Z51JO02 /* Resources */,
+				1NM3D631UG325TI1A9Q486F1 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				12C33586665W8E1PY7U17508 /* Lvsevb */,
+			);
+			name = Lvsevb;
+			productName = Lvsevb;
+			productReference = FRJ25OH1836K5W6X6854458H /* Lvsevb.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		H39F95A691O440C13P6GWD0B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					1Z5713V765G209YOZBL58W6G = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 7343B51719B932J31P55H173 /* Build configuration list for PBXProject "Lvsevb" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CYEXL472Q6V4424382120340;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = SKG0123037BQ732623Q886Y8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1Z5713V765G209YOZBL58W6G /* Lvsevb */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		763444VU372W99402Z51JO02 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1NM3D631UG325TI1A9Q486F1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lvsevb/Pods-Lvsevb-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Lvsevb/Pods-Lvsevb-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lvsevb/Pods-Lvsevb-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3Y59G361633N1312H31Z2YW9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lvsevb-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1E23751L71I1257438KXLA40 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				VJK52CFYIW0038E68O672T35 /* GYYMainBlitzView.swift in Sources */,
+				DH46R05U3119H6297083J5JY /* WKTRoomView.swift in Sources */,
+				WHQ4F0U43Z9T8985878X9325 /* TCEpicController.swift in Sources */,
+				RIDL096M0J400V492Z2QG1X3 /* YRequestListView.swift in Sources */,
+				KDW062912483D4I5995NN3S5 /* OKLoungeScreenView.swift in Sources */,
+				BO458JT9109V9K3M223QXPN6 /* NTeamupObject.swift in Sources */,
+				RQ5D1Y8THKSYD32A850Z8577 /* LQTableView.swift in Sources */,
+				FMB40I7WP98R40245140655W /* TValidatorListController.swift in Sources */,
+				FN8087T4ZS1A36527J98488A /* WAArenaRealmController.swift in Sources */,
+				TL064S1P5TZ34Y7H02EDH8S2 /* KLoginDriftView.swift in Sources */,
+				ZB4EPP9855337283U7P5619R /* FCollectionSkinView.swift in Sources */,
+				HX236Q374093G8764458015N /* SPRoarPlayObject.swift in Sources */,
+				WPN3530234OW1U40031O51S2 /* CScreenUserView.swift in Sources */,
+				RS700F43JX51A07WN8MW9E34 /* JGameTitanObject.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		10R933593LR813PR40M63676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2L2767809D42Y0V1RC7823WN /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7M2GR2O172031J45375QH6N3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42Z39041U2L4OY40IV47T509 /* Pods-Lvsevb.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lvsevb/Lvsevb.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Lvsevb/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Lvesvb;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Lvsevb requires your permission to access the camera and to have video chats with friends.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Lvsevb uses the microphone so you can record artwork process notes and voice commentary for posts.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Lvsevb requires your consent to access the photo gallery, select videos and pictures, post updates and modify the profile picture.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.took.lvsevb;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		7MA7J33Z7A6HK3YU997691N3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0Q53152IA1AQFR052F03C24B /* Pods-Lvsevb.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Lvsevb/Lvsevb.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JPTS6M4T5B;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Lvsevb/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Lvesvb;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Lvsevb requires your permission to access the camera and to have video chats with friends.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Lvsevb uses the microphone so you can record artwork process notes and voice commentary for posts.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Lvsevb requires your consent to access the photo gallery, select videos and pictures, post updates and modify the profile picture.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = im.seex.lobo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		40SEH7J4K78V71A91BDR8370 /* Build configuration list for PBXNativeTarget "Lvsevb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7MA7J33Z7A6HK3YU997691N3 /* Debug */,
+				7M2GR2O172031J45375QH6N3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7343B51719B932J31P55H173 /* Build configuration list for PBXProject "Lvsevb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2L2767809D42Y0V1RC7823WN /* Debug */,
+				10R933593LR813PR40M63676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = H39F95A691O440C13P6GWD0B /* Project object */;
+}

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="j6G-98-ZB9" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="sM5-7x-6Ih" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="oiN-70-JKn" customClass="MTSkydrifterCell" customModule="PlayGames" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oiN-70-JKn" id="Dl6-1L-FQB">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rAS-l6-TTv">
+                        <rect key="frame" x="21" y="7" width="278" height="74"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GeO-kq-DXU">
+                                <rect key="frame" x="12" y="12" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49.97" id="Tf5-6a-tbX"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gE-21-SG0">
+                                <rect key="frame" x="74" y="27.333333333333336" width="40.666666666666657" height="19.333333333333336"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4l-NS-uVv">
+                                <rect key="frame" x="213" y="18" width="53" height="38"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="crystalCola"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="I4l-NS-uVv" secondAttribute="trailing" constant="11.99" id="Aui-iJ-cnG"/>
+                            <constraint firstItem="6gE-21-SG0" firstAttribute="centerY" secondItem="GeO-kq-DXU" secondAttribute="centerY" id="OpC-1Y-4Sp"/>
+                            <constraint firstAttribute="bottom" secondItem="GeO-kq-DXU" secondAttribute="bottom" constant="12.03" id="vRc-TG-s31"/>
+                            <constraint firstItem="GeO-kq-DXU" firstAttribute="top" secondItem="rAS-l6-TTv" secondAttribute="top" constant="12.02" id="7qX-zE-80g"/>
+                            <constraint firstItem="6gE-21-SG0" firstAttribute="leading" secondItem="GeO-kq-DXU" secondAttribute="trailing" constant="11.99" id="Its-MB-mgZ"/>
+                            <constraint firstItem="GeO-kq-DXU" firstAttribute="leading" secondItem="rAS-l6-TTv" secondAttribute="leading" constant="12.03" id="INz-Ih-nN9"/>
+                            <constraint firstAttribute="height" constant="73.99" id="590-2f-gzw"/>
+                            <constraint firstItem="I4l-NS-uVv" firstAttribute="centerY" secondItem="rAS-l6-TTv" secondAttribute="centerY" id="F0A-2E-JtH"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="11"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="rAS-l6-TTv" firstAttribute="leading" secondItem="Dl6-1L-FQB" secondAttribute="leading" constant="20.98" id="3nJ-Ke-TDo"/>
+                    <constraint firstItem="rAS-l6-TTv" firstAttribute="top" secondItem="Dl6-1L-FQB" secondAttribute="top" constant="7.04" id="ao0-I6-lb0"/>
+                    <constraint firstAttribute="trailing" secondItem="rAS-l6-TTv" secondAttribute="trailing" constant="21.02" id="Ft1-H9-H2l"/>
+                    <constraint firstAttribute="bottom" secondItem="rAS-l6-TTv" secondAttribute="bottom" constant="6.99" id="Sp4-5I-qBE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="D8Y-sU-V0V"/>
+            <connections>
+                <outlet property="friends_user_avatar_imageView" destination="GeO-kq-DXU" id="omJ-Td-Bds"/>
+                <outlet property="friends_user_message_button" destination="I4l-NS-uVv" id="zcE-0e-qNZ"/>
+                <outlet property="friends_user_name_label" destination="6gE-21-SG0" id="uHf-T4-Cvn"/>
+            </connections>
+            <point key="canvasLocation" x="27" y="-21"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="crystalCola" width="53" height="38"/>
+    </resources>
+</document>
