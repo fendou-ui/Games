@@ -12,6 +12,14 @@ class MySettingViewController: UIViewController, UITableViewDataSource, UITableV
         tableView.dataSource = self
         tableView.register(UINib(nibName: "MySettingTableViewCell", bundle: nil), forCellReuseIdentifier: "set")
     }
+    // https://docs.google.com/document/d/163lAGA_h07sbQkuGs6ZBIucpN_umuppRFdTlREbBewA/edit?usp=sharing
+    
+    //用户协议：https://docs.google.com/document/d/1h3NDNrcpCkT413QawVD9Tyu6Zb38z1YqjGXwQsDvzLg/edit?usp=sharing
+    
+    //隐私协议：https://docs.google.com/document/d/1GlYwAN0uc-Cx0HICzthyjIVV-3kWNRNOfziY9X37cSo/edit?usp=sharing
+    
+    // lvsevbsook@gmail.com
+
     
     func settingMetedata() {
         mySettes = [
@@ -79,6 +87,21 @@ class MySettingViewController: UIViewController, UITableViewDataSource, UITableV
         else if dict["item_name"] == "Deletion of account" {
             showDeleteAccountAlert()
         }
+        else if dict["item_name"] == "Privacy agreement" {
+            openAgreementPage(.privacy)
+        }
+        else if dict["item_name"] == "User agreement" {
+            openAgreementPage(.terms)
+        }
+        else if dict["item_name"] == "Community guidelines" {
+            openAgreementPage(.communityGuidelines)
+        }
+    }
+    
+    private func openAgreementPage(_ page: GameAgreementPage) {
+        let webVC = GameAgreementWebViewController(page: page)
+        webVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(webVC, animated: true)
     }
     
     func showDeleteAccountAlert() {
@@ -110,7 +133,7 @@ class MySettingViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func showContactUsPopup() {
-        let email = "support@playgames.com"
+        let email = "lvsevbsook@gmail.com"
         
         let overlay = UIView(frame: view.bounds)
         overlay.backgroundColor = UIColor.black.withAlphaComponent(0.5)
@@ -181,7 +204,7 @@ class MySettingViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     @objc func contactUsCopyEmail() {
-        UIPasteboard.general.string = "support@playgames.com"
+        UIPasteboard.general.string = "lvsevbsook@gmail.com"
         GameLoadingHUD.gameLoadingSuccess("Email copied", in: self.view)
     }
     

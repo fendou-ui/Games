@@ -1,6 +1,5 @@
 
 import UIKit
-import AuthenticationServices
 
 class LoginAndRegisterVC: UIViewController {
 
@@ -54,13 +53,13 @@ class LoginAndRegisterVC: UIViewController {
     
     
     @IBAction func tapEnterAndRegisterClick(_ sender: Any) {
-        loginEmailAddress()
-        return
+//        loginEmailAddress()
+//        return
         
-//        if isPrivacy == false {
-//            GameLoadingHUD.gameLoadingError("Please check and select the agreement", in: self.view)
-//            return
-//        }
+        if isPrivacy == false {
+            GameLoadingHUD.gameLoadingError("Please check and select the agreement", in: self.view)
+            return
+        }
         let email = email_textFiled.text ?? ""
         let password = password_textFiled.text ?? ""
         
@@ -69,30 +68,11 @@ class LoginAndRegisterVC: UIViewController {
             return
         }
         
-//        if login_button.isSelected {
-//            gameLoginAccount(email: email, password: password)
-//        } else {
-//            gameRegisterAccount(email: email, password: password)
-//        }
-        
-        
-        
-    }
-    
-    @IBAction func tapAppleButtonClick(_ sender: Any) { // 苹果登录
-        if isPrivacy == false {
-            GameLoadingHUD.gameLoadingError("Please check and select the agreement", in: self.view)
-            return
+        if login_button.isSelected {
+            gameLoginAccount(email: email, password: password)
+        } else {
+            gameRegisterAccount(email: email, password: password)
         }
-        let request = ASAuthorizationAppleIDProvider().createRequest()
-        request.requestedScopes = [.fullName, .email]
-        
-        let controller = ASAuthorizationController(authorizationRequests: [request])
-        controller.delegate = self
-        controller.presentationContextProvider = self
-        controller.performRequests()
-        
-        loginEmailAddress()
     }
     
     @IBAction func selectPrivacyAndTermsClick(_ sender: UIButton) {
@@ -100,11 +80,24 @@ class LoginAndRegisterVC: UIViewController {
             sender.isSelected = !sender.isSelected
             isPrivacy = sender.isSelected
         }
-        else if sender.tag == 312 {
-            
+        else if sender.tag == 312 { // 隐私协议
+            openAgreementPage(.privacy)
         }
-        else {
-            
+        else { // 用户协议
+            openAgreementPage(.terms)
+        }
+    }
+    
+    private func openAgreementPage(_ page: GameAgreementPage) {
+        let webVC = GameAgreementWebViewController(page: page)
+        webVC.hidesBottomBarWhenPushed = true
+        if let navigationController {
+            navigationController.pushViewController(webVC, animated: true)
+        } else {
+            let nav = UINavigationController(rootViewController: webVC)
+            nav.isNavigationBarHidden = true
+            nav.modalPresentationStyle = .fullScreen
+            present(nav, animated: true)
         }
     }
     
@@ -192,51 +185,4 @@ class LoginAndRegisterVC: UIViewController {
         }
     }
     
-}
-
-// Apple 登录
-extension LoginAndRegisterVC: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-    
-    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-        return self.view.window!
-    }
-    
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
-            let userID = credential.user
-            let email = credential.email ?? ""
-            let fullName = [credential.fullName?.givenName, credential.fullName?.familyName]
-                .compactMap { $0 }
-                .joined(separator: " ")
-            
-            UserDefaults.standard.set(userID, forKey: "CurrentLoggedInAccount")
-            UserDefaults.standard.set(userID, forKey: "GameAppleUserID")
-            UserDefaults.standard.set(email, forKey: "GameAppleUserEmail")
-            UserDefaults.standard.set(fullName, forKey: "GameAppleUserName")
-            
-            let profileKey = "AccountUserProfileStorage_\(userID)"
-            let isNewUser = UserDefaults.standard.dictionary(forKey: profileKey) == nil
-            if isNewUser {
-                let profile: [String: String] = [
-                    "processhandler_profile_nickname_manager": fullName.isEmpty ? "Player" : fullName,
-                    "controllerserviceprovider_profile_avatarimage_adapter": "",
-                    "factory_profile_fanstotal_buildergeneratorresolver": "0",
-                    "coordinatordispatcher_profile_followingtotal_scheduler": "0",
-                    "executor_wallet_coinsbalance_observerlistenerdelegate": "200"
-                ]
-                UserDefaults.standard.set(profile, forKey: profileKey)
-            }
-            
-            GameLoadingHUD.gameLoadingSuccess("Login successful", in: self.view)
-            if isNewUser {
-                gameAccountRegisterGoToEditProfile()
-            } else {
-                gameAccountRegisterAndLoginSuccess()
-            }
-        }
-    }
-    
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        GameLoadingHUD.gameLoadingError("Apple login failed", in: self.view)
-    }
 }

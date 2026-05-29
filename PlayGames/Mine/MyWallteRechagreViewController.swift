@@ -17,15 +17,15 @@ class MyWallteRechagreViewController: UIViewController {
     }
     
     let productList: [RechargeProduct] = [
-        RechargeProduct(productID: "new_1000",    price: "$0.99",   coins: 60,    description: "Starter Pack",    bonus: 0),
-        RechargeProduct(productID: "com.playgames.coins300",   price: "$1.99",   coins: 300,   description: "Basic Pack",      bonus: 15),
-        RechargeProduct(productID: "com.playgames.coins600",   price: "$4.99",   coins: 600,   description: "Popular Pack",    bonus: 50),
-        RechargeProduct(productID: "com.playgames.coins1200",  price: "$9.99",  coins: 1200,  description: "Value Pack",      bonus: 120),
-        RechargeProduct(productID: "com.playgames.coins2500",  price: "$19.99",  coins: 2500,  description: "Premium Pack",    bonus: 300),
-        RechargeProduct(productID: "com.playgames.coins5000",  price: "$24.99",  coins: 5000,  description: "Super Pack",      bonus: 700),
-        RechargeProduct(productID: "com.playgames.coins6500",  price: "$49.99",  coins: 6500,  description: "Mega Pack",       bonus: 1000),
-        RechargeProduct(productID: "com.playgames.coins10000", price: "$69.99", coins: 10000, description: "Ultra Pack",      bonus: 1800),
-        RechargeProduct(productID: "com.playgames.coins16000", price: "$99.99", coins: 16000, description: "Supreme Pack",    bonus: 3200)
+        RechargeProduct(productID: "eklccvoxwcdtyzkh",    price: "$0.99",   coins: 60,    description: "Starter Pack",    bonus: 0),
+        RechargeProduct(productID: "hadsompqqfvmoutw",   price: "$1.99",   coins: 300,   description: "Basic Pack",      bonus: 15),
+        RechargeProduct(productID: "bvwhqzjevskfvxrj",   price: "$4.99",   coins: 600,   description: "Popular Pack",    bonus: 50),
+        RechargeProduct(productID: "msstdlyzvjabrpyg",  price: "$9.99",  coins: 1200,  description: "Value Pack",      bonus: 120),
+        RechargeProduct(productID: "rxxdhaizpikwclwt",  price: "$19.99",  coins: 2500,  description: "Premium Pack",    bonus: 300),
+        RechargeProduct(productID: "oqjdvfhjgqwjhgdf",  price: "$24.99",  coins: 5000,  description: "Super Pack",      bonus: 700),
+        RechargeProduct(productID: "odaapefqhistgkhy",  price: "$49.99",  coins: 6500,  description: "Mega Pack",       bonus: 1000),
+        RechargeProduct(productID: "pqxbebahvdsfnbwt", price: "$69.99", coins: 10000, description: "Ultra Pack",      bonus: 1800),
+        RechargeProduct(productID: "wdpcgnrfmuvsiqwr", price: "$99.99", coins: 16000, description: "Supreme Pack",    bonus: 3200)
     ]
     
     override func viewDidLoad() {
