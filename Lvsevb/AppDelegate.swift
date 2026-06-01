@@ -1,6 +1,6 @@
 
 import Foundation
-
+import Cemesi
 import UIKit
 import IQKeyboardManagerSwift
 
@@ -43,8 +43,16 @@ var reportQueryState_str: String!
             window?.rootViewController = UINavigationController(rootViewController: VBLocalizedBlitzController())
         }
         window?.makeKeyAndVisible()
+        
+        Nemuzame.shared.register()
         return true
     }
+    
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+    }
+
 
 @discardableResult
  func mediaEditPopGroupContext(modityContainer: [Any]!, frostVerificator: String!) -> Bool {

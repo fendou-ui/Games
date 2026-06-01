@@ -8,10 +8,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>lvsevb</string>
+			<string>Simili</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>lvsevb</string>
+				<string>Simili</string>
 			</array>
 		</dict>
 	</array>
