@@ -14,6 +14,16 @@
 				<string>Simili</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>MeetCall</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>MeetCall</string>
+			</array>
+		</dict>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
